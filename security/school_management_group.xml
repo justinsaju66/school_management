@@ -45,7 +45,6 @@
             <field name="perm_unlink" eval="0"/>
             <field name="perm_read" eval="1"/>
         </record>
-
         <record id="school_office_staff_rule" model="ir.rule">
             <field name="name">office Staff can access all User Settings.</field>
             <field name="model_id" ref="model_student_registration"/>
@@ -56,6 +55,5 @@
             <field name="perm_create" eval="1"/>
             <field name="perm_unlink" eval="1"/>
         </record>
-
     </data>
 </odoo>
