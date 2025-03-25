@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="create_user_action_server" model="ir.actions.server">
+        <field name="name">server action</field>
+        <field name="model_id" ref="school_management.model_student_registration"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = record.action_create_user()
+        </field>
+    </record>
+
+    <record id="create_user" model="base.automation">
+        <field name="name">Create new user from student</field>
+         <field name="model_id" ref="school_management.model_student_registration"/>
+        <field name="trigger">on_create</field>
+        <field name="action_server_ids" eval="[(6,0,[ref('school_management.create_user_action_server')])]"/>
+        <field name="active" eval="True"/>
+    </record>
+
+</odoo>
+
+
+

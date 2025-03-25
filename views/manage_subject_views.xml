@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="manage_subject_form_view" model="ir.ui.view">
+        <field name="name">manage.subject.form.view</field>
+        <field name="model">manage.subject</field>
+        <field name="arch" type="xml">
+            <form class="student">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="department_id"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="manage_subject_list_view" model="ir.ui.view">
+        <field name="name">manage.subject.list.view</field>
+        <field name="model">manage.subject</field>
+        <field name="arch" type="xml">
+            <list string="registration">
+                <field name="name"/>
+                <field name="department_id"/>
+            </list>
+        </field>
+    </record>
+</odoo>

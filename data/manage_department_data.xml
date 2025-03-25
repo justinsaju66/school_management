@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+        <record id="manage_department_data" model="manage.department">
+            <field name="name">Computer Science</field>
+        </record>
+</odoo>

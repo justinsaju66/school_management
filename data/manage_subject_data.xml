@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+        <record id="manage_subject_data" model="manage.subject">
+            <field name="name">C++</field>
+            <field name="department_id" ref="manage_department_data"/>
+        </record>
+</odoo>

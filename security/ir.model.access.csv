@@ -1,0 +1,16 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_manage_department,access.manage.department,model_manage_department,base.group_user,1,1,1,1
+access_student_registration,access.student.registration,model_student_registration,school_management.school_management_office,1,1,1,1
+access_student_registration,access.student.registration,model_student_registration,school_management.school_management_teacher,1,1,1,0
+access_student_registration,access.student.registration,model_student_registration,school_management.school_management_student,1,0,0,0
+access_manage_subject,access.manage.subject,model_manage_subject,base.group_user,1,1,1,1
+access_manage_class,access.manage.class,model_manage_class,base.group_user,1,1,1,1
+access_academic_year,access.academic.year,model_academic_year,base.group_user,1,1,1,1
+access_manage_club,access.manage.club,model_manage_club,base.group_user,1,1,1,1
+access_manage_event,access.manage.event,model_manage_event,base.group_user,1,1,1,1
+access_sale_order,access.sale.order,model_sale_order,base.group_user,1,1,1,1
+access_res_partner,access.res.partner,model_res_partner,base.group_user,1,1,1,1
+access_manage_leave,access.manage.leave,model_manage_leave,base.group_user,1,1,1,1
+access_manage_exam,access.manage.exam,model_manage_exam,base.group_user,1,1,1,1
+
+

@@ -1,0 +1,17 @@
+<odoo>
+        <data>
+<!-- Inherit the sale order model's form view and customize -->
+            <record id="view_order_form_admitted" model="ir.ui.view">
+                <field name="name">sale.order.form.admitted</field>
+                <field name="model">sale.order</field>
+                <field name="inherit_id" ref="sale.view_order_form"/>
+                <field name="priority">1000</field>
+                <field name="arch" type="xml">
+<!-- Statusbar widget with the new status -->
+                    <xpath expr="//field[@name='state']" position="replace">
+                        <field name="state" widget="statusbar" statusbar_visible="draft,admitted,sent,invoiced,done" />
+                    </xpath>
+                </field>
+            </record>
+        </data>
+</odoo>

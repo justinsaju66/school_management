@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_school_management" model="ir.actions.act_window">
+        <field name="name">School</field>
+        <field name="res_model">student.registration</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+
+     <record id="action_school_manage_department" model="ir.actions.act_window">
+        <field name="name">Manage Department</field>
+        <field name="res_model">manage.department</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+
+     <record id="action_school_student_registration" model="ir.actions.act_window">
+        <field name="name">Student Registration</field>
+        <field name="res_model">student.registration</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+
+    <record id="action_school_manage_class" model="ir.actions.act_window">
+        <field name="name">Manage Class</field>
+        <field name="res_model">manage.class</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+    <record id="action_school_manage_subject" model="ir.actions.act_window">
+        <field name="name">Manage Subject</field>
+        <field name="res_model">manage.subject</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+
+    <record id="action_school_academic_year" model="ir.actions.act_window">
+        <field name="name">Manage academic year</field>
+        <field name="res_model">academic.year</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+
+    <record id="action_school_manage_club" model="ir.actions.act_window">
+        <field name="name">Manage club</field>
+        <field name="res_model">manage.club</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+
+    <record id="action_school_manage_event" model="ir.actions.act_window">
+        <field name="name">Manage event</field>
+        <field name="res_model">manage.event</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+
+    <record id="action_school_res_partner" model="ir.actions.act_window">
+        <field name="name">Manage Teacher</field>
+        <field name="res_model">res.partner</field>
+         <field name="domain">[('school_partner', '=', ('teacher'))]</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+    <record id="action_school_manage_leave" model="ir.actions.act_window">
+        <field name="name">Manage Leave</field>
+        <field name="res_model">manage.leave</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+    <record id="action_school_manage_exam" model="ir.actions.act_window">
+        <field name="name">Manage Exam</field>
+        <field name="res_model">manage.exam</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+    </record>
+
+
+    <record id="action_school_office_staff" model="ir.actions.act_window">
+        <field name="name">Manage Staff</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,kanban,form,activity</field>
+        <field name="context">{}</field>
+        <field name="path">partner</field>
+        <field name="domain">[('school_partner', '=', ('office_staff'))]</field>
+    </record>
+
+
+    <menuitem name="School"
+        id="menu_school_root"
+        sequence="1"
+        action="action_school_management"/>
+
+    <menuitem id="menu_school_new_student"
+        name="Student"
+        parent="menu_school_root"
+        sequence="2"
+        action="action_school_management"/>
+
+    <menuitem id="menu_school_student_registration"
+        name="Registration"
+        parent="menu_school_new_student"
+        sequence="3"
+        action="action_school_student_registration"/>
+
+    <menuitem id="menu_school_configuration"
+        name="Configuration"
+        parent="menu_school_root"
+        sequence="9"
+        action="action_school_management"/>
+    <menuitem id="menu_school_manage_department"
+        name="Manage department"
+        parent="menu_school_configuration"
+        sequence="1"
+        action="action_school_manage_department"/>
+
+    <menuitem id="menu_school_manage_class"
+        name="Manage Class"
+        parent="menu_school_configuration"
+        sequence="2"
+        action="action_school_manage_class"/>
+
+    <menuitem id="menu_school_manage_subject"
+        name="Manage Subject"
+        parent="menu_school_configuration"
+        sequence="3"
+        action="action_school_manage_subject"/>
+
+    <menuitem id="menu_school_academic_year"
+        name="Manage Academic year"
+        parent="menu_school_configuration"
+        sequence="5"
+        action="action_school_academic_year"/>
+
+    <menuitem id="menu_school_manage_club"
+        name="Club"
+        parent="menu_school_root"
+        sequence="4"
+        action="action_school_manage_club"/>
+    <menuitem id="menu_school_manage_event"
+        name="Event"
+        parent="menu_school_root"
+        sequence="5"
+        action="action_school_manage_event"/>
+    <menuitem id="menu_school_employee"
+        name="Employee"
+        parent="menu_school_root"
+        sequence="6"
+        action="action_school_management"/>
+    <menuitem id="menu_school_manage_teacher"
+        name="Teacher"
+        parent="menu_school_employee"
+        sequence="1"
+        action="action_school_res_partner"/>
+    <menuitem id="menu_school_manage_staff"
+        name="Staff"
+        parent="menu_school_employee"
+        action="action_school_office_staff"/>
+    <menuitem id="menu_school_manage_leave"
+        name="Leave"
+        parent="menu_school_root"
+        sequence="7"
+        action="action_school_manage_leave"/>
+     <menuitem id="menu_school_manage_exam"
+        name="Exam"
+        parent="menu_school_root"
+        sequence="8"
+        action="action_school_manage_exam"/>
+
+</odoo>

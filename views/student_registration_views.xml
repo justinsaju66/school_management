@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="student_registration_form_view" model="ir.ui.view">
+        <field name="name">student.registration.form.view </field>
+        <field name="model">student.registration</field>
+        <field name="arch" type="xml">
+            <form class="student">
+                <header>
+                    <button name="action_register" string="Register" type="object" help="Move  to  Confirm state" invisible="state != 'draft'" class="btn-primary"/>
+                    <button name="action_draft"   string="Set to Draft" type="object" help="Move  to  Draft state"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                     <div class="oe_button_box" name="button_box" groups="base.group_user">
+                        <button name="action_exam"  type="object" class="oe_stat_button" icon="fa-users" help="Exams to Attend">
+                            <field name="exam_count" widget="statinfo" string="Exam"/>
+                        </button>
+                     </div>
+                <group>
+                    <group>
+                         <div class="oe_title">
+                    <h1>
+                        <field name="sequence" readonly="1"/>
+                    </h1>
+                         </div>
+                        <field name="fname"/>
+                        <field name="lname"/>
+                        <field name="name"/>
+                        <field name="father"/>
+                        <field name="mother"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="dob"/>
+                        <field name="age"/>
+                        <field name="gender"/>
+                        <field name="class_id"/>
+                    </group>
+                    <group>
+                        <field name="date"/>
+                        <field name="attendance"/>
+                        <field name="club_ids" widget="many2many_tags"/>
+                        <field name="photo" widget="image" class="oe_avatar" nolabel="1"/>
+                        <field name="registration_date"/>
+                        <field name="school_id"/>
+                        <field name="tc"/>
+                        <field name="aadhaar_number"/>
+                    </group>
+                </group>
+                    <notebook>
+                        <page name="public" string="Address">
+                                <div id="communication_address_d" > <!-- These two div are used to position org_chart -->
+                                    <div id="id_student_address" >
+                                        <group string="Address">
+                                            <field name="communication_address"/>
+                                            <field name="same_as_communication"/>
+                                            <field name="permanent_address" invisible = "same_as_communication == True"/>
+                                        </group>
+                                    </div>
+                                 </div>
+                        </page>
+
+                        <page name="public" string="Academic">
+                                <div id="academic_id" > <!-- These two div are used to position org_chart -->
+                                    <div id="id_student_academic" >
+                                        <group string="Academic">
+                                            <field name="previous_academic_id" options="{'no_create': True}"/>
+                                            <field name="previous_class_id" domain="[('id', '=', previous_class_ids)]" options="{'no_create': True}"/>
+                                            <field name="previous_class_ids" invisible="1"/>
+
+                                        </group>
+                                    </div>
+                                 </div>
+                        </page>
+                        <page name="public" string="Exam">
+                                <field name="exam_ids" readonly="True">
+                            <list >
+                                <field name="name" />
+                                <field name="paper_ids" />
+                            </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+     <record id="student_registration_list_views" model="ir.ui.view">
+        <field name="name">school.student.registration.list.views</field>
+        <field name="model">student.registration</field>
+        <field name="arch" type="xml">
+            <list string="registration"
+                decoration-success = "attendance == 'True'"
+                decoration-danger = "attendance == 'False'">
+<!--                <field name="sequence"/>-->
+                <field name="fname"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="gender"/>
+                <field name="attendance"/>
+            </list>
+        </field>
+    </record>
+
+
+
+</odoo>

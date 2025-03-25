@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="manage_academic_year_list" model="ir.ui.view">
+        <field name="name">manage.academic.year.list</field>
+        <field name="model">academic.year</field>
+        <field name="arch" type="xml">
+            <list string="academic" editable="bottom">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+</odoo>

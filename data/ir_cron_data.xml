@@ -1,0 +1,37 @@
+<odoo>
+       <!-- Scheduler for Event reminder-->
+        <record id="ir_cron_scheduler_reminder" model="ir.cron">
+            <field name="name"> Event Reminder</field>
+            <field name="model_id" ref="school_management.model_manage_event"/>
+            <field name="state">code</field>
+            <field name="code">model.email_reminder()</field>
+            <field name="active" eval="True"/>
+<!--            <field name="user_id" ref="base.view_partner_form" />-->
+            <field name="interval_number">2</field>
+            <field name="interval_type">days</field>
+        </record>
+
+       <!-- Scheduler for Attendance-->
+    <record id="ir_cron_attendance" model="ir.cron">
+            <field name="name"> Attendance</field>
+            <field name="model_id" ref="school_management.model_student_registration"/>
+            <field name="state">code</field>
+            <field name="code">model.update_attendance()</field>
+            <field name="active" eval="True"/>
+<!--            <field name="user_id" ref="base.view_partner_form" />-->
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+        </record>
+
+       <!-- Scheduler for Event Archive-->
+     <record id="ir_cron_scheduler_archive" model="ir.cron">
+            <field name="name"> Event Archive</field>
+            <field name="model_id" ref="school_management.model_manage_event"/>
+            <field name="state">code</field>
+            <field name="code">model._archive_occurred_event()</field>
+            <field name="active" eval="True"/>
+<!--            <field name="user_id" ref="base.view_partner_form" />-->
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+        </record>
+</odoo>

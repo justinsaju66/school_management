@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="manage_event_form_view" model="ir.ui.view">
+        <field name="name">manage.event.form.view</field>
+        <field name="model">manage.event</field>
+        <field name="arch" type="xml">
+            <form class="student">
+                <header>
+                    <button name="action_send_mail" type="object"
+                       string="Send Email" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="club_id"/>
+                        <field name="event_date"/>
+                        <field name="school_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+   <record id="manage_event_view_search" model="ir.ui.view">
+       <field name="name">manage.event.view.search</field>
+       <field name="model">manage.event</field>
+       <field name="arch" type="xml">
+           <search>
+               <field name="active"/>
+               <filter string="Archived" name="active" domain="[('active', '=', False)]"/>
+           </search>
+           </field>
+   </record>
+
+     <record id="manage_event_list_view" model="ir.ui.view">
+        <field name="name">manage.event.list.view</field>
+        <field name="model">manage.event</field>
+        <field name="arch" type="xml">
+            <list string="leave">
+                <field name="name"/>
+                <field name="club_id"/>
+                <field name="event_date"/>
+            </list>
+        </field>
+    </record>
+</odoo>

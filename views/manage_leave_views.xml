@@ -1,0 +1,42 @@
+<odoo>
+    <record id="manage_leave_form_view" model="ir.ui.view">
+        <field name="name">manage.leave.form.view</field>
+        <field name="model">manage.leave</field>
+        <field name="arch" type="xml">
+            <form class="student">
+                <sheet>
+
+                    <group>
+                        <field name="student_id"/>
+                        <field name="class_id"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="reason"/>
+                        <field name="total_day"/>
+                        <field name="half_day"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="manage_leave_list_view" model="ir.ui.view">
+        <field name="name">manage.leave.list.view</field>
+        <field name="model">manage.leave</field>
+        <field name="arch" type="xml">
+            <list string="leave">
+                <field name="student_id"/>
+                <field name="class_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="total_day"/>
+            </list>
+        </field>
+    </record>
+</odoo>
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+<odoo>
+    <record id="manage_exam_form_view" model="ir.ui.view">
+        <field name="name">manage.exam.form.view</field>
+        <field name="model">manage.exam</field>
+        <field name="arch" type="xml">
+            <form class="student">
+                <header>
+<!--                        <button name="button_in_action" string="Assign" type="object" help="Assign Exam for the student" />-->
+                    <xpath expr="//div[@class='button_box']" position="inside">
+                         <button name="action_assign" string="Assign" type="object" class="oe_highlight"/>
+                    </xpath>
+                    </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="class_id"/>
+
+                    </group>
+                    <notebook>
+                        <page string ="Exam Details">
+                            <field name="paper_ids">
+                            <list editable="bottom">
+                                <control>
+                                    <create name="add_subject_control" string="Add a Subject"/>
+                                </control>
+                                <field name="name"/>
+                                <field name="max_mark" />
+                                <field name="avg_mark"/>
+                            </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="manage_exam_list_view" model="ir.ui.view">
+        <field name="name">manage.exam.list.view</field>
+        <field name="model">manage.exam</field>
+        <field name="arch" type="xml">
+            <list string="registration">
+                <field name="name"/>
+                <field name="class_id"/>
+                <field name="paper_ids"/>
+            </list>
+        </field>
+    </record>
+</odoo>
+
+
+
+
+
+
+

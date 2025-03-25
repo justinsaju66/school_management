@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="manage_class_data" model="manage.class">
+        <field name="name">Degree</field>
+        <field name="department_id" ref="manage_department_data"/>
+    </record>
+</odoo>
