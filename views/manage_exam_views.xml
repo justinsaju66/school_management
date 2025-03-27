@@ -7,7 +7,7 @@
                 <header>
 <!--                        <button name="button_in_action" string="Assign" type="object" help="Assign Exam for the student" />-->
                     <xpath expr="//div[@class='button_box']" position="inside">
-                         <button name="action_assign" string="Assign" type="object" class="oe_highlight"/>
+                         <button name="action_assign" string="Assign To" type="object" class="oe_highlight" groups="school_management.school_management_teacher,school_management.school_management_office"/>
                     </xpath>
                     </header>
                 <sheet>

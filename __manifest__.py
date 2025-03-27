@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 {
     'name': "School",
     'version': '1.0',
@@ -12,8 +13,8 @@
     """,
     # data files always loaded at installation
     'data': [
-         'security/ir.model.access.csv',
          'security/school_management_group.xml',
+         'security/ir.model.access.csv',
          'data/automation.xml',
          'data/ir_sequence_data.xml',
          'data/manage_department_data.xml',

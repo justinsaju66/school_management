@@ -6,8 +6,8 @@
         <field name="arch" type="xml">
             <form class="student">
                 <header>
-                    <button name="action_register" string="Register" type="object" help="Move  to  Confirm state" invisible="state != 'draft'" class="btn-primary"/>
-                    <button name="action_draft"   string="Set to Draft" type="object" help="Move  to  Draft state"/>
+                    <button name="action_register" string="Register" type="object" help="Move  to  Confirm state" invisible="state != 'draft'" class="btn-primary" groups="school_management.school_management_teacher,school_management.school_management_office"/>
+                    <button name="action_draft"   string="Set to Draft" type="object" help="Move  to  Draft state" groups="school_management.school_management_teacher,school_management.school_management_office"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>

@@ -12,7 +12,7 @@ class ManageLeave(models.Model):
     _rec_name = 'student_id'
 
     student_id = fields.Many2one(comodel_name='student.registration', string="Student", required=True)
-    class_id = fields.Char(string="Class")
+    class_id = fields.Many2one(related='student_id.class_id')
     start_date = fields.Date(string="Start Date",default=datetime.now())
     end_date = fields.Date(string="End Date")
     total_day = fields.Integer(string="Total Days", compute="_compute_total_day", store=True)

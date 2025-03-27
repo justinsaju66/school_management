@@ -17,7 +17,6 @@ class StudentRegistration(models.Model):
 
     fname = fields.Char(string="First name", required=True)
     lname = fields.Char(string="Last name")
-    user_id = fields.Many2one(comodel_name='res.partner',string='User')
     name = fields.Char(string='Full Name', compute='_compute_name', store=True)
     father = fields.Char(string="Father")
     mother = fields.Char(string="Mother")

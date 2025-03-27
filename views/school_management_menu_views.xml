@@ -95,10 +95,12 @@
     <menuitem id="menu_school_configuration"
         name="Configuration"
         parent="menu_school_root"
+        groups="school_management.school_management_office,school_management.school_management_teacher"
         sequence="9"
         action="action_school_management"/>
     <menuitem id="menu_school_manage_department"
         name="Manage department"
+        groups="school_management.school_management_office,school_management.school_management_teacher"
         parent="menu_school_configuration"
         sequence="1"
         action="action_school_manage_department"/>
@@ -107,18 +109,21 @@
         name="Manage Class"
         parent="menu_school_configuration"
         sequence="2"
+        groups="school_management.school_management_teacher,school_management.school_management_office"
         action="action_school_manage_class"/>
 
     <menuitem id="menu_school_manage_subject"
         name="Manage Subject"
         parent="menu_school_configuration"
         sequence="3"
+        groups="school_management.school_management_office,school_management.school_management_teacher"
         action="action_school_manage_subject"/>
 
     <menuitem id="menu_school_academic_year"
         name="Manage Academic year"
         parent="menu_school_configuration"
         sequence="5"
+        groups="school_management.school_management_office,school_management.school_management_teacher"
         action="action_school_academic_year"/>
 
     <menuitem id="menu_school_manage_club"
@@ -135,7 +140,8 @@
         name="Employee"
         parent="menu_school_root"
         sequence="6"
-        action="action_school_management"/>
+        action="action_school_management"
+        groups="school_management.school_management_teacher,school_management.school_management_office"/>
     <menuitem id="menu_school_manage_teacher"
         name="Teacher"
         parent="menu_school_employee"
