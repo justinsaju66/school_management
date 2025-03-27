@@ -27,7 +27,7 @@ class StudentRegistration(models.Model):
     email = fields.Char(string="Email",required=True)
     school_id = fields.Many2one(
         comodel_name='res.company',
-        string="School", default=lambda self: self.env.user.company_id.id,
+        string="School", default=lambda self: self.env.company,
         change_default=True, index=True,
         tracking=1,
         check_company=True,readonly=True)
