@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+         <record id="school_student_rule" model="ir.rule">
+            <field name="name">Students can only view their own data</field>
+            <field name="model_id" ref="model_student_registration"/>
+            <field name="domain_force">[('email', '=', user.email)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_student'))]"/>
+        </record>
+
+        <record id="school_student_leave_rule" model="ir.rule">
+            <field name="name">Students can only view and edit their own leave</field>
+            <field name="model_id" ref="model_manage_leave"/>
+            <field name="domain_force">[('student_id', '=', user.name)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_student'))]"/>
+        </record>
+
+        <record id="school_teacher_rule" model="ir.rule">
+            <field name="name">Teacher can access to all student</field>
+            <field name="model_id" ref="model_student_registration"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_teacher'))]"/>
+        </record>
+
+        <record id="school_teacher_rule_leave" model="ir.rule">
+            <field name="name">Teacher can access all leave Settings</field>
+            <field name="model_id" ref="model_manage_leave"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_teacher'))]"/>
+        </record>
+
+        <record id="school_office_staff_rule" model="ir.rule">
+            <field name="name">office Staff can access all student.</field>
+            <field name="model_id" ref="model_student_registration"/>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_teacher'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record id="school_office_staff_rule_leave" model="ir.rule">
+            <field name="name">office Staff can access all leave.</field>
+            <field name="model_id" ref="model_manage_leave"/>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_office'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="school_student_exam_rule" model="ir.rule">
+            <field name="name">Students can only view their own exam</field>
+            <field name="model_id" ref="model_manage_exam"/>
+            <field name="domain_force">[('student_ids', '=', user.name)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_student'))]"/>
+        </record>
+
+        <record id="school_teacher_rule_exam" model="ir.rule">
+            <field name="name">Teacher can view and create exam </field>
+            <field name="model_id" ref="model_manage_exam"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_teacher'))]"/>
+        </record>
+
+        <record id="school_office_staff_rule_exam" model="ir.rule">
+            <field name="name">office Staff can access all exam Settings.</field>
+            <field name="model_id" ref="model_manage_exam"/>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_office'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record id="school_student_event_rule" model="ir.rule">
+            <field name="name">Students can only view their own event</field>
+            <field name="model_id" ref="model_manage_event"/>
+            <field name="domain_force">[('club_id.student_ids', '=', user.name)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_student'))]"/>
+        </record>
+
+        <record id="school_teacher_rule_event" model="ir.rule">
+            <field name="name">Teacher can access all event Settings</field>
+            <field name="model_id" ref="model_manage_event"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_teacher'))]"/>
+        </record>
+
+        <record id="school_office_staff_rule_event" model="ir.rule">
+            <field name="name">office Staff can access all event Settings.</field>
+            <field name="model_id" ref="model_manage_event"/>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_office'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record id="school_student_club_rule" model="ir.rule">
+            <field name="name">Students can only view their own club</field>
+            <field name="model_id" ref="model_manage_club"/>
+            <field name="domain_force">[('student_ids', '=', user.name)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_student'))]"/>
+        </record>
+
+        <record id="school_teacher_rule_club" model="ir.rule">
+            <field name="name">Teacher can access all club Settings</field>
+            <field name="model_id" ref="model_manage_club"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_teacher'))]"/>
+        </record>
+
+        <record id="school_office_staff_rule_club" model="ir.rule">
+            <field name="name">office Staff can access all club Settings.</field>
+            <field name="model_id" ref="model_manage_club"/>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_office'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record id="school_student_class_rule" model="ir.rule">
+            <field name="name">Students can only view their own class</field>
+            <field name="model_id" ref="model_manage_class"/>
+            <field name="domain_force">[('school_id', '=', user.company_id.id)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_student'))]"/>
+        </record>
+
+        <record id="school_teacher_rule_class" model="ir.rule">
+            <field name="name">Teacher can access all class Settings</field>
+            <field name="model_id" ref="model_manage_class"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_teacher'))]"/>
+        </record>
+
+        <record id="school_office_staff_rule_class" model="ir.rule">
+            <field name="name">office Staff can access all class Settings.</field>
+            <field name="model_id" ref="model_manage_class"/>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_office'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record id="school_teacher_rule_employee" model="ir.rule">
+            <field name="name">Teacher can access view edit to employee</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="domain_force">[('name','=',user.name)]</field>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_teacher'))]"/>
+        </record>
+
+        <record id="school_office_staff_rule_employee" model="ir.rule">
+            <field name="name">office Staff can access all class Settings.</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="groups" eval="[Command.link(ref('school_management.school_management_office'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record model="ir.rule" id="school_multi_comp_rule">
+            <field name="name">Student registration multi-company</field>
+            <field name="model_id" ref="model_student_registration"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('school_id', 'in', company_ids)]</field>
+        </record>
+
+        <record model="ir.rule" id="school_multi_comp_event_rule">
+            <field name="name">Manage event multi-company</field>
+            <field name="model_id" ref="model_manage_event"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('school_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</odoo>

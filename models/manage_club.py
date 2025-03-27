@@ -31,5 +31,4 @@ class ManageClub(models.Model):
                 # 'active_test':False,
                 'default_club_id': self.id
             }
-
         }

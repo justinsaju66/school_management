@@ -5,6 +5,7 @@ from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 
 from odoo import fields, models, api, _
+from odoo.api import readonly
 from odoo.fields import Many2one
 
 
@@ -29,7 +30,7 @@ class StudentRegistration(models.Model):
         string="School", default=lambda self: self.env.user.company_id.id,
         change_default=True, index=True,
         tracking=1,
-        check_company=True)
+        check_company=True,readonly=True)
     club_ids = fields.Many2many(comodel_name='manage.club')
     phone = fields.Char(string="Phone")
     dob = fields.Date(string="DOB")

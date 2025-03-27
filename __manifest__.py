@@ -14,6 +14,7 @@
     # data files always loaded at installation
     'data': [
          'security/school_management_group.xml',
+         'security/school_management_record_rules.xml',
          'security/ir.model.access.csv',
          'data/automation.xml',
          'data/ir_sequence_data.xml',

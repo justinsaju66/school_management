@@ -21,8 +21,8 @@ access_manage_event_office,access.manage.event,model_manage_event,school_managem
 access_manage_event_teacher,access.manage.event,model_manage_event,school_management.school_management_teacher,1,1,1,1
 access_manage_event_student,access.manage.event,model_manage_event,school_management.school_management_student,1,0,0,0
 access_sale_order,access.sale.order,model_sale_order,base.group_user,1,1,1,1
-access_res_partner,access.res.partner,model_res_partner,school_management.school_management_office,1,1,1,1
-access_res_partner,access.res.partner,model_res_partner,school_management.school_management_teacher,1,1,1,0
+access_res_partner_office,access.res.partner,model_res_partner,school_management.school_management_office,1,1,1,1
+access_res_partner_teacher,access.res.partner,model_res_partner,school_management.school_management_teacher,1,1,0,0
 access_manage_leave_office,access.manage.leave,model_manage_leave,school_management.school_management_office,1,1,1,1
 access_manage_leave_office,access.manage.leave,model_manage_leave,school_management.school_management_teacher,1,1,1,1
 access_manage_leave_student,access.manage.leave,model_manage_leave,school_management.school_management_student,1,1,1,0
