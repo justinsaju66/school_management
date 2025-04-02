@@ -35,7 +35,7 @@
          'views/res_partner_views.xml',
          'views/manage_leave_views.xml',
          'views/manage_exam_views.xml',
-         'report/student_leave_report.xml',
+         'report/ir.actions.report.xml',
          'report/student_leave_report_template.xml',
          'wizard/leave_information.xml',
 
