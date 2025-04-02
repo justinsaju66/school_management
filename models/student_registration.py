@@ -5,8 +5,7 @@ from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 
 from odoo import fields, models, api, _
-from odoo.api import readonly
-from odoo.fields import Many2one
+
 
 
 class StudentRegistration(models.Model):

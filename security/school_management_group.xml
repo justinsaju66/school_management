@@ -21,7 +21,7 @@
         <record id="school_management_office" model="res.groups">
             <field name="name">Office Staff</field>
             <field name="category_id" ref="school_management.module_category_school_management"/>
-            <field name="implied_ids" eval="[(4, ref('school_management_teacher'))]"/>
+            <field name="implied_ids" eval="[Command.link(ref('school_management_teacher'))]"/>
             <field name="users" eval="[Command.link(ref('base.user_admin'))]"/>
         </record>
     </data>

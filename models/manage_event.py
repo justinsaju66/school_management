@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 
-from odoo import fields, models, api
+from odoo import fields, models
 
 
 class ManageEvent(models.Model):
@@ -20,7 +20,7 @@ class ManageEvent(models.Model):
     event_date = fields.Date(string="Date")
     school_id = fields.Many2one(
         comodel_name='res.company',
-        string="School", default=lambda self: self.env.user.company_id.id,
+        string="School", default=lambda self: self.env.company,
         change_default=True, index=True,
         tracking=1)
     active = fields.Boolean(string="Active")
