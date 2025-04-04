@@ -1,7 +1,7 @@
 <odoo>
     <record id="action_report_student_leave" model="ir.actions.report">
         <field name="name">Leave Report</field>
-        <field name="model">manage.leave</field>
+        <field name="model">leave.information</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">school_management.report_leave</field>
         <field name="report_file">school_management.report_leave</field>

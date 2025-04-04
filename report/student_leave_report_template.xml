@@ -7,17 +7,18 @@
                         <div class="text-center">
                             <h1>student leave</h1>
                         </div>
-                        <h3>Student:</h3>
 
-                            <p><span t-field="o.student_id"/></p>
-                            <p><span t-field="o.start_date"/></p>
-                            <p><span t-field="o.end_date"/></p>
-                            <p><span t-field="o.total_day"/></p>
-                            <p><span t-field="o.reason"/></p>
+                        <h3>Student:</h3>
+                                <p><span t-field="o.student_id"/></p>
+                                <p><span t-field="o.start_date"/></p>
+                                <p><span t-field="o.end_date"/></p>
+                                <p><span t-field="o.total_day"/></p>
+                                <p><span t-field="o.reason"/></p>
 
                     </div>
                 </t>
             </t>
         </t>
+
     </template>
 </odoo>
