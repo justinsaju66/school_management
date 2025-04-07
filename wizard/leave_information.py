@@ -1,54 +1,56 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, api, Command
+from datetime import timedelta
+
+from dateutil.utils import today
+
+from odoo import fields, models, api
 
 
 class LeaveInformation(models.TransientModel):
     _name = 'leave.information'
-    _description = 'Leave information'
+    _description = 'Leave Information'
 
     student_id = fields.Many2one(
         comodel_name='student.registration',
         string="Student")
-    date_from = fields.Date(String="From Date")
-    date_to = fields.Date(String="End Date")
-
+    date_from = fields.Date(string="From Date")
+    date_to = fields.Date(string="End Date")
+    filter_by = fields.Selection(
+        string='Filter By',
+        selection=[('day', 'Day'), ('week', 'Week'), ('month', 'Month'),
+                   ('year', 'Year')])
 
     def action_report_leave(self):
-        student = self.student_id.ensure_one()
-        query = """
-                    SELECT *
-                    FROM manage_leave
-                    INNER JOIN student_registration
-                    ON manage_leave.student_id = student_registration.id
-                    WHERE manage_leave.student_id = %s
-                """
-        params = (self.student_id.id,)
-        self.env.cr.execute(query ,params)
-        report = self.env.cr.dictfetchall()
+        """Fetch leave data based on student """
 
         data = {
-            'student_id': student.name,
-            # 'filter_by': self.filter_by,
+            'student': self.student_id.name,
             'date_from': self.date_from,
             'date_to': self.date_to,
-            'report': report,
-        }
+            'filter_by':self.filter_by,
 
-        return self.env.ref('school_management.action_report_student_leave').report_action(self,data=data)
+        }
+        return self.env.ref('school_management.action_report_student_leave').report_action(self, data=data)
 
 class LeaveReport(models.AbstractModel):
     _name = 'report.school_management.report_leave'
 
     @api.model
     def _get_report_values(self, docids, data=None):
-        domain = []
-        if data.get('student'):
-            domain.append(('student_id', '=', data.get('student')))
-        docs = self.env['manage.leave'].search(domain)
-        student = self.env['student.registration'].browse(data.get('student'))
-        data.update({'student_id': student.name})
-        print(data)
-        print(docs)
+        query = """
+              SELECT * 
+            FROM manage_leave
+            WHERE 1=1
+        """
+
+        params = []
+        if data.get('student_id'):
+            query += " AND student_id = student_id"
+            params.append(data['student_id'])
+
+        self.env.cr.execute(query, tuple(params))
+        docs = self.env.cr.dictfetchall()
+        print('docs',docs)
 
         return {
             'doc_ids': docids,
@@ -56,3 +58,7 @@ class LeaveReport(models.AbstractModel):
             'docs': docs,
             'data': data,
         }
+
+
+
+

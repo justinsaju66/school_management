@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-
-
 {
     'name': "School",
     'version': '1.0',
-    'depends': ['base','hr','sale'],
+    'depends': ['base','hr','sale', 'web'],
     'author': "Author Name",
     'category': 'all',
     'sequence':1,
@@ -28,7 +26,6 @@
          'views/manage_class_views.xml',
          'views/manage_subject_views.xml',
          'views/manage_department_views.xml',
-         'views/school_management_menu_views.xml',
          'views/manage_club_views.xml',
          'views/manage_event_view.xml',
          'views/sale_order_views.xml',
@@ -38,7 +35,7 @@
          'report/ir.actions.report.xml',
          'report/student_leave_report_template.xml',
          'wizard/leave_information.xml',
-
+        'views/school_management_menu_views.xml',
 
     ],
     # data files containing optionally loaded demonstration data

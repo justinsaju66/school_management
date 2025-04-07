@@ -1,24 +1,46 @@
 <odoo>
-<template id="report_leave">
+    <template id="report_leave">
         <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-call="web.external_layout">
-                    <div class="page">
-                        <div class="text-center">
-                            <h1>student leave</h1>
-                        </div>
-
-                        <h3>Student:</h3>
-                                <p><span t-field="o.student_id"/></p>
-                                <p><span t-field="o.start_date"/></p>
-                                <p><span t-field="o.end_date"/></p>
-                                <p><span t-field="o.total_day"/></p>
-                                <p><span t-field="o.reason"/></p>
-
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="text-center">
+                        <h1>Student Leave Report</h1>
                     </div>
-                </t>
+                    <h3>Student:</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Total Days</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="leave">
+                                <tr>
+                                    <td>
+                                        <t t-esc="leave['student_id']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="leave['start_date']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="leave['end_date']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="leave['total_day']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="leave['reason']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
             </t>
         </t>
-
     </template>
 </odoo>

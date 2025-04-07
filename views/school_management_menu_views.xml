@@ -77,8 +77,8 @@
         <field name="name">Leave Information</field>
         <field name="res_model">leave.information</field>
         <field name="view_id" ref="school_management_report"/>
-        <field name="target">new</field>
         <field name="view_mode">list,form</field>
+        <field name="target">new</field>
     </record>
 
 

@@ -7,13 +7,14 @@
             <form>
                 <sheet>
                     <group>
-                         <footer>
+                        <footer>
                             <button name="action_report_leave" type="object"
-                               string="Print" class="oe_highlight"/>
+                                    string="Print" class="oe_highlight"/>
                         </footer>
                         <field name="student_id"/>
                         <field name="date_from"/>
                         <field name="date_to"/>
+                        <field name="filter_by"/>
                     </group>
                 </sheet>
             </form>
