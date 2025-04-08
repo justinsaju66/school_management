@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta, datetime
 
-from dateutil.relativedelta import relativedelta
 
 from odoo import  models, api
 
@@ -12,22 +11,36 @@ class StudentReport(models.AbstractModel):
     @api.model
     def _get_report_values(self, docids, data=None):
         query = """
-               SELECT * 
-               FROM student_registration
-                WHERE 1=1
-
+            SELECT student_registration.*, 
+                   manage_department.name AS dep_name
+                 
+            FROM student_registration
+            INNER JOIN manage_department 
+                ON student_registration.department_id = manage_department.id
+            
+            WHERE 1=1
         """
         params = []
-        print('fs')
-        if data.get('student_id'):
-            query += " AND student_registration.name = %s"
-            print(query)
-            params.append(data['student_id'])
 
+        if data:
+            if data.get('student_id'):
+                query += " AND student_registration.id = %s"
+                params.append(data['student_id'])
+
+            if data.get('department_id'):
+                query += " AND manage_department.name = %s"
+                params.append(data['department_id'])
+
+            # if data.get('class_id'):
+            #     query += " AND manage_class.name = %s"
+            #     params.append(data['class_id'])
+
+        print("Final SQL Query:", query)
+        print("Parameters:", params)
 
         self.env.cr.execute(query, tuple(params))
         docs = self.env.cr.dictfetchall()
-        print('docs', docs)
+        print("Query Results:", docs)
 
         return {
             'doc_ids': docids,
@@ -35,3 +48,6 @@ class StudentReport(models.AbstractModel):
             'docs': docs,
             'data': data,
         }
+
+
+

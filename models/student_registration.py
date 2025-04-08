@@ -40,6 +40,10 @@ class StudentRegistration(models.Model):
                    ])
     registration_date = fields.Date(string="Registration date", default=datetime.now())
     photo = fields.Binary(string='Photo')
+    department_id = fields.Many2one(
+        comodel_name='manage.department',
+        string="Department",
+        )
     previous_academic_id = fields.Many2one(
         comodel_name='manage.department',
         string="Previous academic department",

@@ -32,9 +32,9 @@
                                     <td>
                                         <t t-esc="std['gender']"/>
                                     </td>
-                                    <td>
-                                        <t t-esc="std['club_ids']"/>
-                                    </td>
+<!--                                    <td>-->
+<!--                                        <t t-esc="std['club_ids']"/>-->
+<!--                                    </td>-->
                                 </tr>
                             </t>
                         </tbody>

@@ -12,7 +12,10 @@
                                     string="Print" class="oe_highlight"/>
                         </footer>
                         <field name="student_id"/>
-                        <field name="filter_by"/>
+<!--                        <field name="filter_by"/>-->
+                        <field name="class_id" />
+                        <field name="department_id"/>
+                        <field name="club_id" />
                     </group>
                 </sheet>
             </form>
