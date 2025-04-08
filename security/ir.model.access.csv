@@ -41,6 +41,7 @@ access_manage_exam_teacher,access.manage.exam,model_manage_exam,school_managemen
 access_manage_exam_student,access.manage.exam,model_manage_exam,school_management.school_management_student,1,0,0,0
 
 access_leave_information,access.leave.information,model_leave_information,base.group_user,1,1,1,1
+access_student_information,access.student.information,model_student_information,base.group_user,1,1,1,1
 
 
 

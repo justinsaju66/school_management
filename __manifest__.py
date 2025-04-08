@@ -34,7 +34,9 @@
          'views/manage_exam_views.xml',
          'report/ir.actions.report.xml',
          'report/student_leave_report_template.xml',
+         'report/student_information_template.xml',
          'wizard/leave_information.xml',
+         'wizard/student_information.xml',
         'views/school_management_menu_views.xml',
 
     ],

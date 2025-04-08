@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="school_management_student_report" model="ir.ui.view">
+        <field name="name">school.management.student.report</field>
+        <field name="model">student.information</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <footer>
+                            <button name="action_report_leave" type="object"
+                                    string="Print" class="oe_highlight"/>
+                        </footer>
+                        <field name="student_id"/>
+                        <field name="filter_by"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>
