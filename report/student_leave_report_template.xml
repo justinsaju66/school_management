@@ -6,23 +6,55 @@
                     <div class="text-center">
                         <h1>Student Leave Report</h1>
                     </div>
-                    <h3>Student:</h3>
-                    <table>
+                    <div>
+                        <b>Date and Time:</b>
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+
+                        <br/>
+                        <t t-if="data.get('student_id')">
+                            <span>
+                                <b>Student:</b>
+                                <t t-esc="data.get('student_name')"/>
+                            </span>
+
+                        </t>
+                    </div>
+                    <br/>
+                    <table width="100%" height="100%">
                         <thead>
                             <tr>
-                                <th>Student Name</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Total Days</th>
-                                <th>Reason</th>
+                                <t t-if="not data.get('student_id')">
+                                    <th>
+                                        <b>Student Name</b>
+                                    </th>
+                                </t>
+
+                                <th>
+                                    <b>Start Date</b>
+                                </th>
+                                <th>
+                                    <b>End Date</b>
+                                </th>
+                                <th>
+                                    <b>Total Days</b>
+                                </th>
+                                <th>
+                                    <b>Reason</b>
+                                </th>
+                                <th>
+                                    <b>Class</b>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <t t-foreach="docs" t-as="leave">
                                 <tr>
-                                    <td>
-                                        <t t-esc="leave['student_id']"/>
-                                    </td>
+                                    <t t-if="not data.get('student_id')">
+                                        <td>
+                                            <t t-esc="leave['name']"/>
+
+                                        </td>
+                                    </t>
                                     <td>
                                         <t t-esc="leave['start_date']"/>
                                     </td>
@@ -35,6 +67,10 @@
                                     <td>
                                         <t t-esc="leave['reason']"/>
                                     </td>
+                                    <td>
+                                        <t t-esc="leave['class_name']"/>
+                                    </td>
+
                                 </tr>
                             </t>
                         </tbody>

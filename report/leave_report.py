@@ -3,7 +3,8 @@ from datetime import timedelta, datetime
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import  models, api
+from odoo import  models, api,_
+from odoo.exceptions import UserError
 
 
 class LeaveReport(models.AbstractModel):
@@ -12,16 +13,19 @@ class LeaveReport(models.AbstractModel):
     @api.model
     def _get_report_values(self, docids, data=None):
         query = """
-               SELECT manage_leave.*, student_registration.name AS name
+               SELECT manage_leave.*, student_registration.*,manage_class.name AS class_name
                 FROM manage_leave
-                INNER JOIN student_registration ON manage_leave.student_id = student_registration.id
+                INNER JOIN student_registration 
+                    ON manage_leave.student_id = student_registration.id
+                LEFT JOIN manage_class 
+                    ON student_registration.class_id = manage_class.id
                 WHERE 1=1
-
         """
+
         params = []
 
         if data.get('student_id'):
-            query += " AND manage_leave.student_id = %s"
+            query += " AND student_registration.id = %s"
             print(query)
             params.append(data['student_id'])
 
@@ -51,7 +55,7 @@ class LeaveReport(models.AbstractModel):
                 month_start = today.replace(day=1)
                 next_month = month_start + relativedelta(months=1)
                 month_end = next_month.replace(day=1) - timedelta(days=1)
-                query += "AND manage_leave.start_date <= %s AND manage_leave.end_date >= "
+                query += "AND manage_leave.start_date <= %s AND manage_leave.end_date >= %s"
                 params.append(month_end.strftime('%Y-%m-%d'))
                 params.append(month_start.strftime('%Y-%m-%d'))
 
@@ -66,13 +70,16 @@ class LeaveReport(models.AbstractModel):
                             """
                 params.append(year_end.strftime('%Y-%m-%d'))
                 params.append(year_start.strftime('%Y-%m-%d'))
+
         self.env.cr.execute(query, tuple(params))
         docs = self.env.cr.dictfetchall()
         print('docs', docs)
-
-        return {
-            'doc_ids': docids,
-            'doc_model': 'manage.leave',
-            'docs': docs,
-            'data': data,
-        }
+        if docs:
+            return {
+                'doc_ids': docids,
+                'doc_model': 'manage.leave',
+                'docs': docs,
+                'data': data,
+            }
+        else:
+            raise UserError(_("""No Data\n"""))

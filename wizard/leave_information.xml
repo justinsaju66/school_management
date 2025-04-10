@@ -9,17 +9,15 @@
                     <group>
                         <footer>
                             <button name="action_report_leave" type="object"
-                                    string="Print" class="oe_highlight"/>
+                                    string="Print Report" class="oe_highlight"/>
                         </footer>
                         <field name="student_id"/>
-                        <field name="date_from"/>
-                        <field name="date_to"/>
                         <field name="filter_by"/>
+                        <field name="date_from"  invisible="filter_by"/>
+                        <field name="date_to" invisible="filter_by"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
-
-
 </odoo>

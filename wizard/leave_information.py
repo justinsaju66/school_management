@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models, api
+from odoo import fields, models
 
 
 class LeaveInformation(models.TransientModel):
@@ -18,9 +18,10 @@ class LeaveInformation(models.TransientModel):
                    ('year', 'Year')])
 
     def action_report_leave(self):
-        """Fetch leave data based on student """
+        """Fetch leave data """
         data = {
             'student_id': self.student_id.id,
+            'student_name': self.student_id.name,
             'date_from': self.date_from,
             'date_to': self.date_to,
             'filter_by': self.filter_by,

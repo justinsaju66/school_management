@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models, api
+from odoo import fields, models
 
 
 class StudentInformation(models.TransientModel):
@@ -10,9 +10,7 @@ class StudentInformation(models.TransientModel):
     student_id = fields.Many2one(
         comodel_name='student.registration',
         string="Student")
-    # filter_by = fields.Selection(
-    #     string='Filter By',
-    #     selection=[('class', 'Class'), ('department', 'Department'), ('club', 'Club')])
+
     class_id = fields.Many2one(
         comodel_name='manage.class',
         string="Class",
@@ -29,10 +27,9 @@ class StudentInformation(models.TransientModel):
         """Fetch student data """
         data = {
             'student_id': self.student_id.id,
-            'department_id': self.department_id.name,
+            'student_name': self.student_id.name,
+            'department_id': self.department_id.id,
             'class_id': self.class_id.id,
             'club_id': self.club_id.id,
-
-
         }
         return self.env.ref('school_management.action_report_student_information').report_action(self, data=data)

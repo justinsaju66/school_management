@@ -111,7 +111,7 @@
         name="Configuration"
         parent="menu_school_root"
         groups="school_management.school_management_office,school_management.school_management_teacher"
-        sequence="9"
+        sequence="10"
         action="action_school_management"/>
     <menuitem id="menu_school_manage_department"
         name="Manage department"
@@ -179,7 +179,7 @@
     <menuitem id="menu_school_report"
         name="Report"
         parent="menu_school_root"
-        sequence="10"
+        sequence="9"
         action="action_school_management"/>
     <menuitem id="menu_school_leave_information"
         name="Leave Information"

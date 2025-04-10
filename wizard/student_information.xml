@@ -9,13 +9,12 @@
                     <group>
                         <footer>
                             <button name="action_report_leave" type="object"
-                                    string="Print" class="oe_highlight"/>
+                                    string="Print Report" class="oe_highlight"/>
                         </footer>
                         <field name="student_id"/>
-<!--                        <field name="filter_by"/>-->
-                        <field name="class_id" />
+                        <field name="class_id"/>
                         <field name="department_id"/>
-                        <field name="club_id" />
+                        <field name="club_id"/>
                     </group>
                 </sheet>
             </form>

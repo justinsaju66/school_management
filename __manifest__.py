@@ -37,7 +37,7 @@
          'report/student_information_template.xml',
          'wizard/leave_information.xml',
          'wizard/student_information.xml',
-        'views/school_management_menu_views.xml',
+        'views/school_management_menu.xml',
 
     ],
     # data files containing optionally loaded demonstration data
