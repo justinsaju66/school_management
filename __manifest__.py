@@ -40,6 +40,15 @@
         'views/school_management_menu.xml',
 
     ],
+    "assets": {
+
+        'web.assets_backend': [
+
+            'school_management/static/src/js/action_manager.js',
+
+        ],
+
+    },
     # data files containing optionally loaded demonstration data
     #    'demo': [
     #     'data/manage_department_demo.xml',

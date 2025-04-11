@@ -11,19 +11,18 @@
                         <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
 
                         <br/>
-                        <t t-if="data.get('student_id')">
+                        <t t-if="data.get('student_ids')">
                             <span>
                                 <b>Student:</b>
                                 <t t-esc="data.get('student_name')"/>
                             </span>
-
                         </t>
                     </div>
                     <br/>
                     <table width="100%" height="100%">
                         <thead>
                             <tr>
-                                <t t-if="not data.get('student_id')">
+                                <t t-if="not data.get('student_ids')">
                                     <th>
                                         <b>Student Name</b>
                                     </th>
@@ -49,7 +48,7 @@
                         <tbody>
                             <t t-foreach="docs" t-as="leave">
                                 <tr>
-                                    <t t-if="not data.get('student_id')">
+                                    <t t-if="not data.get('student_ids')">
                                         <td>
                                             <t t-esc="leave['name']"/>
 
