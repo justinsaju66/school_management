@@ -2,7 +2,6 @@
 import io
 import json
 import xlsxwriter
-
 from odoo import fields, models
 from odoo.tools import json_default
 
@@ -37,6 +36,7 @@ class LeaveInformation(models.TransientModel):
         return self.env.ref('school_management.action_report_student_leave').report_action(self, data=data)
 
     def action_exl_report_leave(self):
+        company = self.env.company
         data = {
             'student_id': self.student_id.id,
             'student_name': self.student_id.name,
@@ -44,6 +44,9 @@ class LeaveInformation(models.TransientModel):
             'date_to': self.date_to,
             'class_id': self.class_id.id,
             'filter_by': self.filter_by,
+            'company_name': company.name,
+            'company_address': company.street,
+            'company_logo': company.logo
         }
         return {
             'type': 'ir.actions.report',

@@ -4,6 +4,7 @@ access_manage_department_teacher,access.manage.department,model_manage_departmen
 access_manage_department_student,access.manage.department,model_manage_department,school_management.school_management_student,1,0,0,0
 
 access_student_registration_office,access.student.registration,model_student_registration,school_management.school_management_office,1,1,1,1
+access_student_registration,access.student.registration,model_student_registration,base.group_system,1,1,1,1
 access_student_registration_teacher,access.student.registration,model_student_registration,school_management.school_management_teacher,1,1,0,0
 access_student_registration_student,access.student.registration,model_student_registration,school_management.school_management_student,1,0,0,0
 

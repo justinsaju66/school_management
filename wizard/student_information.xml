@@ -10,6 +10,8 @@
                         <footer>
                             <button name="action_report_leave" type="object"
                                     string="Print Report" class="oe_highlight"/>
+                            <button name="action_exl_report_student" type="object"
+                                    string="Print EXL Report" class="oe_highlight"/>
                         </footer>
                         <field name="student_id"/>
                         <field name="class_id"/>

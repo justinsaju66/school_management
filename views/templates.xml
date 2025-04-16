@@ -1,0 +1,16 @@
+<odoo>
+
+    <template id="index">
+        <t t-call="website.layout">
+            <t t-set="title">Academy</t>
+            <div class="oe_structure">
+                <div class="container">
+                   <t t-foreach="students" t-as="student">
+                        <t t-esc="student.id"/> <t t-esc="student.name"/>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

@@ -2,7 +2,7 @@
 {
     'name': "School",
     'version': '1.0',
-    'depends': ['base','hr','sale', 'web'],
+    'depends': ['base','hr','sale', 'web','website'],
     'author': "Author Name",
     'category': 'all',
     'sequence':1,
@@ -32,6 +32,7 @@
          'views/res_partner_views.xml',
          'views/manage_leave_views.xml',
          'views/manage_exam_views.xml',
+         'views/templates.xml',
          'report/ir.actions.report.xml',
          'report/student_leave_report_template.xml',
          'report/student_information_template.xml',

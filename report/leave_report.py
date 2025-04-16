@@ -89,26 +89,44 @@ class LeaveReport(models.AbstractModel):
             raise UserError(_("""No Data\n"""))
 
     def get_xlsx_report(self, data, response):
+        output = io.BytesIO()
+        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+        sheet = workbook.add_worksheet()
+        wrap_format = workbook.add_format({'text_wrap': True, 'font_size': '6px', 'align': 'center',
+                                           'bold': True})
+
+        # cell_format = workbook.add_format({'font_size': '12px', 'align': 'center'})
+        head = workbook.add_format({'align': 'center', 'bold': True, 'font_size': '20px'})
+        txt = workbook.add_format({'font_size': '10px', 'align': 'center'})
+        date_format = workbook.add_format({'font_size': '10px', 'align': 'center', 'num_format': 'yyyy-mm-dd'})
+        bold = workbook.add_format({'bold': True,'font_size': '8px','align': 'center'})
+
+        sheet.merge_range('A1:B1', 'Company Details:', wrap_format)
+        sheet.merge_range('A2:B2', f"Company Name: {data.get('company_name')}", wrap_format)
+        sheet.merge_range('A3:B3', 'Address:', wrap_format)
+        sheet.merge_range('A4:B5', f" {data.get('company_address')}", wrap_format)
+
+        sheet.merge_range('B6:M7', 'LEAVE REPORT', head)
+
         report_data = self._get_report_values([], data)
         docs = report_data.get('docs', [])
 
-        output = io.BytesIO()
-        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
-        sheet = workbook.add_worksheet("Leave Report")
+        # headers = ['Student Name', 'Class', 'Leave Reason', 'Start Date', 'End Date', 'Status']
+        # for col, header in enumerate(headers, start=1):
+        #     sheet.write(3, col, header, cell_format)
+        sheet.merge_range('A9:B9', 'Student Name', bold)
+        sheet.merge_range('C9:D9', 'Class', bold)
+        sheet.merge_range('E9:F9', 'Leave Reason', bold)
+        sheet.merge_range('G9:H9', 'Start Date', bold)
+        sheet.merge_range('I9:J9', 'End Date', bold)
 
-        bold = workbook.add_format({'bold': True})
-        date_format = workbook.add_format({'num_format': 'yyyy-mm-dd'})
-
-        headers = ['Student Name', 'Class', 'Leave Reason', 'Start Date', 'End Date', 'Status']
-        for col, header in enumerate(headers):
-            sheet.write(0, col, header, bold)
-
-        for row, record in enumerate(docs, start=1):
-            sheet.merge_range(row, 0, record.get('name', ''))
-            # sheet.write(row, 1, record.get('class_name', ''))
-            # sheet.write(row, 2, record.get('reason', ''))
-            # sheet.write(row, 3, record.get('start_date', ''))
-            # sheet.write(row, 4, record.get('end_date', ''))
+        # Add data (using merged ranges like the second code)
+        for row, record in enumerate(docs, start=10):
+            sheet.merge_range(f'A{row}:B{row}', record.get('name', ''), txt)
+            sheet.merge_range(f'C{row}:D{row}', record.get('class_name', ''), txt)
+            sheet.merge_range(f'E{row}:F{row}', record.get('reason', ''), txt)
+            sheet.merge_range(f'G{row}:H{row}', record.get('start_date', ''), date_format)
+            sheet.merge_range(f'I{row}:J{row}', record.get('end_date', ''), date_format)
 
         workbook.close()
         output.seek(0)

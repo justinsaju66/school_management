@@ -11,7 +11,6 @@
                         <b>Date and Time:</b>
                         <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
                         <br/>
-                        <t t-set="header" t-value="false"/>
                         <t t-if="data.get('student_id')">
                             <span>
                                 <b>Student:</b>
@@ -39,6 +38,9 @@
                                 <th>
                                     <b>Gender</b>
                                 </th>
+                                <th>
+                                    <b>Department</b>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,6 +62,9 @@
                                     </td>
                                     <td>
                                         <t t-esc="std['gender']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="std['dep_name']"/>
                                     </td>
                                 </tr>
                             </t>
