@@ -6,6 +6,7 @@
         <field name="parent_id" ref="website.main_menu"/>
         <field name="sequence" type="int">90</field>
     </record>
+
     <record id="website_partner_menu_leave" model="website.menu">
         <field name="name">Leave</field>
         <field name="url">/webform_leave</field>
@@ -14,11 +15,10 @@
     </record>
 
     <record id="website_partner_menu_event" model="website.menu">
-        <field name="name">Event</field>
+        <field name="name">School Event</field>
         <field name="url">/webform_event</field>
         <field name="parent_id" ref="website.main_menu"/>
         <field name="sequence" type="int">92</field>
     </record>
-
 
 </odoo>

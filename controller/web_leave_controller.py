@@ -17,5 +17,9 @@ class WebLeaveController(Controller):
             'student_id': student_id,
             'start_date': post.get('start_date'),
             'end_date': post.get('end_date'),
+            'reason': post.get('reason'),
         })
-        return request.redirect('/thank-you-page')
+        return request.redirect('/contactus-thank-you')
+
+
+

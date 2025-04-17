@@ -10,10 +10,14 @@ class WebFormController(Controller):
         print('hi')
         request.env['student.registration'].sudo().create({
                     'fname': post.get('fname'),
+                    'lname': post.get('lname'),
+                    'father': post.get('father'),
+                    'mother': post.get('mother'),
                     'phone': post.get('phone'),
                     'email': post.get('email'),
+                    'dob': post.get('dob'),
                     'aadhaar_number': post.get('aadhaar_number'),
-                    'attendance': post.get('attendance'),
+
                 })
         return request.redirect('/thank-you-page')
 

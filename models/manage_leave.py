@@ -17,7 +17,7 @@ class ManageLeave(models.Model):
     end_date = fields.Date(string="End Date")
     total_day = fields.Integer(string="Total Days", compute="_compute_total_day", store=True)
     half_day = fields.Boolean(string="Half Days")
-    reason = fields.Text(string="Reason")
+    reason = fields.Char(string="Reason")
 
     # @api.onchange('start_date', 'end_date', 'total_day')
     # def calculate_date(self):
