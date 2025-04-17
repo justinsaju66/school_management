@@ -1,0 +1,91 @@
+<odoo>
+    <template id="web_event_template">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                    <div class="container">
+                        <h2>Student Event</h2>
+                        <form action="/webform_event/submit" method="post" enctype="multipart/form-data"
+                              class="o_mark_required" data-mark="*" data-model_name="" data-success-page="">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px" for="name">
+                                            <span class="s_website_form_label_content">Name</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control s_website_form_input" name="name" required="1" id="fname"/>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px" for="phone">
+                                            <span class="s_website_form_label_content">Club</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select name="club_id" class="form-control s_website_form_input"
+                                                    required="1">
+                                                <t t-foreach="club" t-as="clb">
+                                                    <option t-att-value="clb.id">
+                                                        <t t-esc="clb.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px" for="email">
+                                            <span class="s_website_form_label_content">Event Date</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="date" class="form-control s_website_form_input" name="event_date"
+                                                   required="1" id="date"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div >
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px" for="attendance">
+                                            <span class="s_website_form_label_content">Active</span>
+
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="checkbox"
+                                                   name="active"  id="active"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_submit" data-name="Submit Button">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <button type="submit" class="btn btn-primary o_website_form_send">Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+
+</odoo>
