@@ -1,0 +1,50 @@
+<odoo>
+    <template id="student_list_template">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <h2 class="text-center">Student Registrations</h2>
+
+                <div class="text-right mb-3">
+                    <a href="webform_view/webform" class="btn btn-success">New Student</a>
+                </div>
+                    <table class="table table-bordered table-striped" width="100%" height="100%">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Father</th>
+                                <th>Mother</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Aadhaar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="students" t-as="student">
+                                <tr>
+                                    <td>
+                                        <t t-esc="student.fname"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="student.father"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="student.mother"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="student.phone"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="student.email"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="student.aadhaar_number"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+            </div>
+        </t>
+    </template>
+</odoo>

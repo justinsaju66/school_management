@@ -21,7 +21,7 @@
                                         </label>
                                         <div class="col-sm">
                                             <input type="text" class="form-control s_website_form_input" name="name"
-                                                   required="1" id="fname"/>
+                                                   required="1" id="name"/>
 
                                         </div>
                                     </div>
@@ -30,7 +30,7 @@
                                      data-type="char" data-name="Field">
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
                                         <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="phone">
+                                               style="width: 200px" for="club_id">
                                             <span class="s_website_form_label_content">Club</span>
                                             <span class="s_website_form_mark">*</span>
                                         </label>
@@ -50,14 +50,14 @@
                                      data-type="char" data-name="Field">
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
                                         <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="email">
+                                               style="width: 200px" for="event_date">
                                             <span class="s_website_form_label_content">Event Date</span>
                                             <span class="s_website_form_mark">*</span>
                                         </label>
                                         <div class="col-sm">
                                             <input type="date" class="form-control s_website_form_input"
                                                    name="event_date"
-                                                   required="1" id="date"/>
+                                                   required="1" id="event_date"/>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                 <div>
                                     <div class="row s_col_no_resize s_col_no_bgcolor">
                                         <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="attendance">
+                                               style="width: 200px" for="active">
                                             <span class="s_website_form_label_content">Active</span>
 
                                         </label>
@@ -79,8 +79,9 @@
                                     <div class="row">
                                         <div class="col-sm">
                                             <center>
-                                                <button type="submit" class="btn btn-primary o_web_event_template">Submit
+                                                <button type="submit" class="btn btn-primary o_website_form_send">Submit
                                                 </button>
+
                                             </center>
                                         </div>
                                     </div>
