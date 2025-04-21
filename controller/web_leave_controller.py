@@ -1,12 +1,22 @@
+from odoo import http
 from odoo.http import request, Controller, route
 
 
 class WebLeaveController(Controller):
 
-    @route('/webform_leave_view', auth='public', website=True)
-    def web_form_view(self, **kwargs):
-        leaves = request.env['manage.leave'].sudo().search([])
-        return request.render('school_management.leave_list_template', {'leaves': leaves, })
+    @route(['/webform_leave_view','/webform_leave_view/page/<int:page>'], auth='public', website=True)
+    def web_form_view(self,page=1, **kwargs):
+        leave_obj = request.env['manage.leave']
+        total_leaves = leave_obj.search_count([])
+        page_detail = request.website.pager(
+            url='/webform_leave_view',
+            total=total_leaves,
+            page=page,
+            step=10,
+        )
+        leaves = leave_obj.sudo().search([], offset=page_detail['offset'], limit=10)
+        values = {'leaves': leaves, 'pager': page_detail}
+        return request.render('school_management.leave_list_template', values)
 
     @route('/webform_leave_view/webform_leave', auth='public', website=True)
     def web_form(self, **kwargs):
@@ -25,4 +35,6 @@ class WebLeaveController(Controller):
             'end_date': post.get('end_date'),
             'reason': post.get('reason'),
         })
-        return request.redirect('/webform_leave_view')
+        return request.render('school_management.thank_you_page')
+
+

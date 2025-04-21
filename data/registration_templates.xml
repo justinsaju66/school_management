@@ -2,152 +2,185 @@
     <template id="web_form_template">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
-                <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
-                    <div class="container" w="75">
-                        <center>
-                            <h2>Student Registration</h2>
-                        </center>
-                        <form action="/webform/submit" method="post" enctype="multipart/form-data"
-                              class="o_mark_required" data-mark="*" data-model_name="" data-success-page="">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                            <div class="s_website_form_rows row s_col_no_bgcolor">
-                                <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
-                                     data-type="char" data-name="Field">
-                                    <div class="row s_col_no_resize s_col_no_bgcolor">
-                                        <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="fname">
-                                            <span class="s_website_form_label_content">Name</span>
-                                            <span class="s_website_form_mark">*</span>
-                                        </label>
-                                        <div class="col-sm">
-                                            <input type="text" class="form-control s_website_form_input" name="fname"
-                                                   required="1" id="fname"/>
+                <div class="container" w="75">
+                    <center>
+                        <h2>Student Registration</h2>
+                    </center>
+                    <form id="student_registration" action="/webform/submit" method="post" enctype="multipart/form-data"
+                          class="o_mark_required" data-mark="*" data-model_name="" data-success-page="">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="s_website_form_rows row s_col_no_bgcolor">
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="fname">
+                                        <span class="s_website_form_label_content">Name</span>
+                                        <span class="s_website_form_mark">*</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input" name="fname"
+                                               required="1" id="fname"/>
 
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
-                                     data-type="char" data-name="Field">
-                                    <div class="row s_col_no_resize s_col_no_bgcolor">
-                                        <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="lname">
-                                            <span class="s_website_form_label_content">Last Name</span>
-                                        </label>
-                                        <div class="col-sm">
-                                            <input type="text" class="form-control s_website_form_input" name="lname"
-                                                   id="lname"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
-                                     data-type="char" data-name="Field">
-                                    <div class="row s_col_no_resize s_col_no_bgcolor">
-                                        <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="father">
-                                            <span class="s_website_form_label_content">Father</span>
-                                        </label>
-                                        <div class="col-sm">
-                                            <input type="text" class="form-control s_website_form_input" name="father"
-                                                   id="father"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
-                                     data-type="char" data-name="Field">
-                                    <div class="row s_col_no_resize s_col_no_bgcolor">
-                                        <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="mother">
-                                            <span class="s_website_form_label_content">Mother</span>
-                                        </label>
-                                        <div class="col-sm">
-                                            <input type="text" class="form-control s_website_form_input" name="mother"
-                                                   id="mother"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
-                                     data-type="char" data-name="Field">
-                                    <div class="row s_col_no_resize s_col_no_bgcolor">
-                                        <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="phone">
-                                            <span class="s_website_form_label_content">Phone</span>
-                                            <span class="s_website_form_mark">*</span>
-                                        </label>
-                                        <div class="col-sm">
-                                            <input type="text" class="form-control s_website_form_input" name="phone"
-                                                   required="1" id="phone"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
-                                     data-type="char" data-name="Field">
-                                    <div class="row s_col_no_resize s_col_no_bgcolor">
-                                        <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="email">
-                                            <span class="s_website_form_label_content">Email</span>
-                                            <span class="s_website_form_mark">*</span>
-                                        </label>
-                                        <div class="col-sm">
-                                            <input type="email" class="form-control s_website_form_input" name="email"
-                                                   required="1" id="email"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
-                                     data-type="char" data-name="Field">
-                                    <div class="row s_col_no_resize s_col_no_bgcolor">
-                                        <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="dob">
-                                            <span class="s_website_form_label_content">DOB</span>
-                                        </label>
-                                        <div class="col-sm">
-                                            <input type="date" class="form-control s_website_form_input" name="dob"
-                                                   id="dob"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
-                                     data-type="char" data-name="Field">
-                                    <div class="row s_col_no_resize s_col_no_bgcolor">
-                                        <label class="col-form-label col-sm-auto s_website_form_label"
-                                               style="width: 200px" for="aadhaar_number">
-                                            <span class="s_website_form_label_content">Aadhaar Number</span>
-                                            <span class="s_website_form_mark">*</span>
-                                        </label>
-                                        <div class="col-sm">
-                                            <input type="text" class="form-control s_website_form_input"
-                                                   name="aadhaar_number" required="1" id="aadhaar_number"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-12 s_website_form_submit mt-3" data-name="Submit Button">
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <center>
-                                                <button type="submit" class="btn btn-primary o_website_form_send">Submit
-                                                </button>
-
-                                            </center>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
-                        </form>
-                    </div>
-                </section>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="lname">
+                                        <span class="s_website_form_label_content">Last Name</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input" name="lname"
+                                               id="lname"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="father">
+                                        <span class="s_website_form_label_content">Father</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input" name="father"
+                                               id="father"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="mother">
+                                        <span class="s_website_form_label_content">Mother</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input" name="mother"
+                                               id="mother"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="phone">
+                                        <span class="s_website_form_label_content">Phone</span>
+                                        <span class="s_website_form_mark">*</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input" name="phone"
+                                               required="1" id="phone"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="email">
+                                        <span class="s_website_form_label_content">Email</span>
+                                        <span class="s_website_form_mark">*</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="email" class="form-control s_website_form_input" name="email"
+                                               required="1" id="email"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="dob">
+                                        <span class="s_website_form_label_content">DOB</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="date" class="form-control s_website_form_input" name="dob"
+                                               required="1"
+                                               id="dob"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="aadhaar_number">
+                                        <span class="s_website_form_label_content">Aadhaar Number</span>
+                                        <span class="s_website_form_mark">*</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input"
+                                               name="aadhaar_number" required="1" id="aadhaar_number"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-6 s_website_form_field mt-3"
+                                 data-type="integer" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="age">
+                                        <span class="s_website_form_label_content">Age</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input" name="age"
+                                               id="age" readonly="readonly"
+                                               t-att-value="'%s' % request.params.get('age', '')"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-12" data-name="Submit Button">
+                                <div style="width: 200px;"/>
+                                <center>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </center>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
             </div>
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                const dobInput = document.getElementById('dob');
+                const ageInput = document.getElementById('age');
+
+                dobInput.addEventListener('change', function () {
+                const dob = new Date(dobInput.value);
+                if (!isNaN(dob.getTime())) {
+                const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                const m = today.getMonth() - dob.getMonth();
+                if (m &lt; 0 || (m === 0 &amp;&amp; today.getDate() &lt; dob.getDate())) {
+                age--;
+                }
+                ageInput.value = age;
+                }
+                else {
+                ageInput.value = '';
+                }
+                });
+                });
+            </script>
+
+
         </t>
     </template>
 
     <template id="thank_you_page" name="Thank You">
         <t t-call="website.layout">
             <div class="container">
-                <h1>Thank you for your submission!</h1>
+                <center>
+                    <h1>Thank you for your submission!</h1>
+                </center>
             </div>
         </t>
     </template>
-
-
 </odoo>
