@@ -1,3 +1,4 @@
+from odoo import http
 from odoo.http import request, Controller, route
 
 class WebEventController(Controller):
@@ -35,3 +36,9 @@ class WebEventController(Controller):
             'active': post.get('active'),
         })
         return request.render('school_management.thank_you_page')
+
+    @http.route('/event/<model("manage.event"):event>/', auth='public', website=True)
+    def student_leave_list(self, event):
+        return http.request.render('school_management.student_event_details', {
+            'event': event
+        })

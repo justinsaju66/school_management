@@ -24,7 +24,18 @@ class WebFormController(Controller):
 
     @route('/webform/submit', type='http', auth='public', website=True, methods=['POST'])
     def web_form_submit(self, **post):
-        print('hi')
+        aadhaar = post.get('aadhaar_number')
+
+        existing = request.env['student.registration'].sudo().search([('aadhaar_number', '=', aadhaar)], limit=1)
+
+        if existing:
+            values = {
+                'error_message': 'A student with this Aadhaar number already exists.',
+                'person': post
+            }
+            return request.render('school_management.web_form_template', values)
+
+
         request.env['student.registration'].sudo().create({
             'fname': post.get('fname'),
             'lname': post.get('lname'),
@@ -41,9 +52,11 @@ class WebFormController(Controller):
         return request.render('school_management.thank_you_page')
 
     @http.route('/student/<model("student.registration"):student>/', auth='public', website=True)
-    def teacher(self, student):
-        return http.request.render('school_management.student_details', {
+    def student_details(self, student):
+        return http.request.render('school_management.web_form_view_template', {
             'person': student
         })
+
+
 
 

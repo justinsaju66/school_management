@@ -37,4 +37,10 @@ class WebLeaveController(Controller):
         })
         return request.render('school_management.thank_you_page')
 
+    @http.route('/leave/<model("manage.leave"):leave>/', auth='public', website=True)
+    def student_leave_list(self, leave):
+        return http.request.render('school_management.student_leave_details', {
+            'leaves': leave
+        })
+
 
