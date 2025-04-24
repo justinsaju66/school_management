@@ -5,7 +5,7 @@ from odoo.http import request, Controller, route
 class WebFormController(Controller):
     @route(['/webform_view', '/webform_view/page/<int:page>'], auth='public', website=True)
     def web_form_view(self, page=1, **kwargs):
-        """Pagenation and view for the student registration"""
+        """pagination and view for the student registration"""
         student_obj = request.env['student.registration']
         total_students = student_obj.search_count([])
         page_detail = request.website.pager(
@@ -55,7 +55,6 @@ class WebFormController(Controller):
             'age': post.get('age'),
             'aadhaar_number': post.get('aadhaar_number'),
         })
-        print('hello')
         return request.render('school_management.thank_you_page')
 
 

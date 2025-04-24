@@ -4,6 +4,7 @@
         <section class="events_section">
             <div class="container" id="event_carousel">
                 <h3 class="section_heading">School Events</h3>
+                <div id="course_carousel" class="container carousel slide" data-bs-ride="carousel" t-att-data-bs-interval="interval">
                 <div class="events_wrapper">
                     <div class="carousel-inner row w-100 mx-auto pt-3" role="listbox">
                     <t t-foreach="result.events" t-as="event" t-key="event.id">
@@ -24,13 +25,13 @@
 
                                 </div>
                          </div>
-                        <a t-attf-href="#event_carousel" class="carousel-control-prev" data-bs-slide="prev" role="button" aria-label="Previous" title="Previous">
+                        <a t-attf-href="#course_carousel" class="carousel-control-prev" data-bs-slide="prev" role="button" aria-label="Previous" title="Previous">
 
                             <span class="fa fa-chevron-circle-left fa-2x"/>
                             <span class="visually-hidden">Previous</span>
 
                             </a>
-                             <a t-attf-href="#event_carousel" class="carousel-control-next" data-bs-slide="next" role="button" aria-label="Next" title="Next">
+                             <a t-attf-href="#course_carousel" class="carousel-control-next" data-bs-slide="next" role="button" aria-label="Next" title="Next">
 
                             <span class="fa fa-chevron-circle-right fa-2x"/>
 
@@ -38,6 +39,7 @@
 
                         </a>
                     </t>
+                </div>
                 </div>
                 </div>
             </div>

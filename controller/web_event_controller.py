@@ -5,7 +5,7 @@ class WebEventController(Controller):
 
     @route(['/webform_event_view','/webform_event_view/page/<int:page>'], auth='public', website=True)
     def web_event_view(self,page=1, **kwargs):
-        """To view and pagenation for the view"""
+        """form view and pagination for the view"""
         event_obj = request.env['manage.event']
         total_students = event_obj.search_count([])
         page_detail = request.website.pager(

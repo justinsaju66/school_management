@@ -8,7 +8,6 @@ class EventSnippet(http.Controller):
     @route('/event_snippt_templete', auth='public', website=True)
     def event_snippet_template(self, **kwargs):
         """form view of event"""
-        print('hey')
         return request.render('school_management.event_snippet_template')
 
     @route('/event/<model("manage.event"):event>', auth='public', website=True)
