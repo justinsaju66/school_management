@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
 <odoo>
    <data>
        <record id="event_email_template" model="mail.template">
@@ -14,7 +16,7 @@
                        Hello,
                        <br/>
                        <br/>
-                       This is our First Email Template!
+                       This is our email Template!
                        <br/>
                        <br/>
                        <br/>Mitchell Admin

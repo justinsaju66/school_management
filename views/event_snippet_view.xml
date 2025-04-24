@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="event_snippet_template">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <h2 class="text-center">School Event</h2>
+
+                <div class="text-right mb-3">
+                    <a href="/snippet_view" class="btn btn-success">New Event</a>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+</odoo>

@@ -15,14 +15,12 @@ class ManageEvent(models.Model):
     club_id = fields.Many2one(
         comodel_name='manage.club',
         string="Club",
-        change_default=True, index=True,
-        tracking=1)
+        )
     event_date = fields.Date(string="Date")
     school_id = fields.Many2one(
         comodel_name='res.company',
         string="School", default=lambda self: self.env.company,
-        change_default=True, index=True,
-        tracking=1)
+        )
     active = fields.Boolean(string="Active")
     user_id = fields.Many2one(comodel_name="res.partner")
 
@@ -50,13 +48,6 @@ class ManageEvent(models.Model):
             else:
                 return 0
 
-    # @api.model
-    # def get_email_to(self):
-    #     partners = self.env['res.partner'].search([('email', '!=', False)])
-    #     email_list = [partner.email for partner in partners if partner.email]
-    #     return ",".join(email_list)
-
-
     def _archive_occurred_event(self):
         """Method for archive event that has occurred"""
         records = self.search([])
@@ -68,11 +59,3 @@ class ManageEvent(models.Model):
                 else:
                     rec.active = True
 
-
-
-    # @api.model
-    # def get_email_to(self):
-    #     user_group = self.env.ref("res.group_res_user")
-    #     email_list = [
-    #         usr.partner_id.email for usr in user_group.users if usr.partner_id.email]
-    #     return ",".join(email_list)

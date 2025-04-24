@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
     <record id="school_management_student_report" model="ir.ui.view">
         <field name="name">school.management.student.report</field>

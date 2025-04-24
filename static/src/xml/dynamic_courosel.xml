@@ -1,69 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="school_management.event_data">
+        <section class="events_section">
+            <div class="container" id="event_carousel">
+                <h3 class="section_heading">School Events</h3>
+                <div class="events_wrapper">
+                    <div class="carousel-inner row w-100 mx-auto pt-3" role="listbox">
+                    <t t-foreach="result.events" t-as="event" t-key="event.id">
+                        <div class="block span3 col-3">
+                            <div class="card-group">
+                                <div class="card">
+                                    <img src="/theme_og_store/static/src/img/default_category.svg"
+                                             class="img img-fluid rotate-center"
+                                             alt="Default Category Image"
+                                             loading="lazy"/>
 
-    <templates id="template" xml:space="preserve">
-    <t t-name="school_management.school_management_event_snippet_carousel">
+                                    <h5 class="mb-0"><t t-esc="event.name"/></h5>
+                                    <a t-attf-href="/event/{{event.id}}" class="btn btn-primary">
+                                                Goto Event
+                                    </a>
 
-    <div id="event_carousel" class="container carousel slide" data-bs-ride="carousel" t-att-data-bs-interval="interval">
+                                     </div>
 
-    <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                                </div>
+                         </div>
+                        <a t-attf-href="#event_carousel" class="carousel-control-prev" data-bs-slide="prev" role="button" aria-label="Previous" title="Previous">
 
-    <t t-foreach="chunks" t-as="chunk">
+                            <span class="fa fa-chevron-circle-left fa-2x"/>
+                            <span class="visually-hidden">Previous</span>
 
-    <div t-att-class="chunk.is_active ? 'carousel-item active' : 'carousel-item'">
+                            </a>
+                             <a t-attf-href="#event_carousel" class="carousel-control-next" data-bs-slide="next" role="button" aria-label="Next" title="Next">
 
-    <div class="row">
+                            <span class="fa fa-chevron-circle-right fa-2x"/>
 
-    <t t-foreach="chunk" t-as="item">
+                            <span class="visually-hidden">Next</span>
 
-    <div class="block span3 col-3">
-
-    <div class="card-group">
-
-    <div class="card">
-    <img class="card-img-top" t-attf-src="data:image/png;base64,{{item.image_1920}}"
-
-         style="padding: 0px; margin: 0px; height: 160px; width:305px;"/>
-
-        <h5 class="mb-0"><t t-esc="item.name"/></h5>
-
-        <a t-attf-href="/slides/{{item.id}}" class="btn btn-primary">
-
-    Goto Event
-
-    </a>
-
-    </div>
-
-    </div>
-
-    </div>
-
+                        </a>
+                    </t>
+                </div>
+                </div>
+            </div>
+        </section>
     </t>
-
-    </div>
-
-    </div>
-
-    </t>
-
-    </div>
-
-    </div>
-
-        <a t-attf-href="#event_carousel" class="carousel-control-prev" data-bs-slide="prev" role="button"
-           aria-label="Previous" title="Previous">
-
-    <span class="fa fa-chevron-circle-left fa-2x"/>
-            <span class="visually-hidden">Previous</span>
-
-    </a>
-        <a t-attf-href="#event_carousel" class="carousel-control-next" data-bs-slide="next" role="button"
-           aria-label="Next" title="Next">
-
-    <span class="fa fa-chevron-circle-right fa-2x"/>
-
-            <span class="visually-hidden">Next</span>
-
-    </a>
-    </t>
-    </templates>
-
+</templates>

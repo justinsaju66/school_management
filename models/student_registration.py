@@ -27,9 +27,7 @@ class StudentRegistration(models.Model):
     school_id = fields.Many2one(
         comodel_name='res.company',
         string="School", default=lambda self: self.env.company,
-        change_default=True, index=True,
-        tracking=1,
-        check_company=True,readonly=True)
+        )
     club_ids = fields.Many2many(comodel_name='manage.club')
     phone = fields.Char(string="Phone")
     dob = fields.Date(string="DOB")
@@ -40,16 +38,11 @@ class StudentRegistration(models.Model):
                    ])
     registration_date = fields.Date(string="Registration date", default=datetime.now())
     photo = fields.Binary(string='Photo')
-    # department_id = fields.Many2one(
-    #     comodel_name='manage.department',
-    #     string="Department",
-    #     )
+
     previous_academic_id = fields.Many2one(
         comodel_name='manage.department',
         string="Previous academic department",
-         index=True,
-        tracking=1,
-        check_company=True)
+        )
     previous_class_id = fields.Many2one(comodel_name='manage.class',
                                      string="Previous Class",
                                      )
@@ -69,10 +62,8 @@ class StudentRegistration(models.Model):
     class_id = fields.Many2one(
         comodel_name='manage.class',
         string="Class",
-        change_default=True, index=True,
-        tracking=1,
-        check_company=True)
-    attendance = fields.Boolean(string="Attendance",default=True)
+        )
+    attendance = fields.Boolean(string="Attendance",default=True,readonly=True)
     date = fields.Date(string="Date", default=datetime.now())
 
     _sql_constraints = [
@@ -100,22 +91,22 @@ class StudentRegistration(models.Model):
 
     @api.model
     def create(self, vals):
-        """Automatically generate a reference number for new books."""
+        """Automatically generate a reference number for new student."""
         if vals.get('sequence', _('New')) == _('New'):
             vals['sequence'] = self.env['ir.sequence'].next_by_code('student.sequence')
         return super(StudentRegistration, self).create(vals)
 
-
-
     @api.depends('previous_academic_id')
     def _compute_previous_class_ids(self):
-        """Method for select only class that are in department"""
+        """Method to select only classes that are in department."""
+        all_classes = self.previous_class_id.search([])
         for rec in self:
             if rec.previous_academic_id:
-                rec.previous_class_ids = self.previous_class_id.search([('department_id', '=', rec.previous_academic_id.id)]).ids
+                rec.previous_class_ids = all_classes.filtered(
+                    lambda cls: cls.department_id.id == rec.previous_academic_id.id
+                ).ids
             else:
-                rec.previous_class_ids = self.previous_class_id.search([]).ids
-
+                rec.previous_class_ids = all_classes.ids
 
     @api.depends('dob')
     def _compute_age(self):
@@ -152,11 +143,7 @@ class StudentRegistration(models.Model):
 
         }
 
-    def unlink(self):
-        """Delete all related records of the student"""
-        leave = self.env['manage.leave'].search([('student_id', '=', self.id)])
-        leave.unlink()
-        return super(StudentRegistration, self).unlink()
+
 
 
     def update_attendance(self):
@@ -182,20 +169,6 @@ class StudentRegistration(models.Model):
 
             }
         self.env['res.users'].sudo().create(user_vals)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

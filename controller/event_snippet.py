@@ -1,10 +1,28 @@
 from odoo import http
+from odoo.http import request, route
 
 
 class EventSnippet(http.Controller):
-    @http.route(['/school_event_snippet'], type="json", auth="public", website=True, methods=['POST'])
-    def all_courses(self):
-        event = http.request.env['manage.event'].search_read(
-            [('website_published', '=', True)], ['name', 'image_1920', 'id'],
-            order='create_date desc', limit=10)
-        return event
+    """Snippet for Event"""
+
+    @route('/event_snippt_templete', auth='public', website=True)
+    def event_snippet_template(self, **kwargs):
+        """form view of event"""
+        print('hey')
+        return request.render('school_management.event_snippet_template')
+
+    @route('/event/<model("manage.event"):event>', auth='public', website=True)
+    def event_snippet(self,event, **kwargs):
+        """To get all event"""
+        return request.render('school_management.student_event_details',{'event': event,})
+
+    @http.route('/get_product_categories', auth="public", type='json',website=True)
+    def get_school_event(self):
+        """Get the website categories for the snippet."""
+        public_categs = request.env[
+            'manage.event'].sudo().search_read(fields=['name', 'id'],order='create_date desc', limit=10
+        )
+        values = {
+            'events': public_categs,
+        }
+        return values

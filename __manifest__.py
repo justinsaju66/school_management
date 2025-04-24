@@ -7,9 +7,8 @@
     'category': 'all',
     'sequence':1,
     'description': """
-    Description text
+    School Management
     """,
-    # data files always loaded at installation
     'data': [
          'security/school_management_group.xml',
          'security/school_management_record_rules.xml',
@@ -39,6 +38,7 @@
          'views/registration_website_view.xml',
          'views/leave_website_view.xml',
          'views/event_website_view.xml',
+         'views/event_snippet_view.xml',
          'report/ir.actions.report.xml',
          'report/student_leave_report_template.xml',
          'report/student_information_template.xml',

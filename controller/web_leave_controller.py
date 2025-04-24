@@ -6,6 +6,7 @@ class WebLeaveController(Controller):
 
     @route(['/webform_leave_view','/webform_leave_view/page/<int:page>'], auth='public', website=True)
     def web_form_view(self,page=1, **kwargs):
+        """Pagenation and  list view for student leave """
         leave_obj = request.env['manage.leave']
         total_leaves = leave_obj.search_count([])
         page_detail = request.website.pager(
@@ -20,6 +21,7 @@ class WebLeaveController(Controller):
 
     @route('/webform_leave_view/webform_leave', auth='public', website=True)
     def web_form(self, **kwargs):
+        """Form for student leave"""
         students = request.env['student.registration'].sudo().search([])
         return request.render('school_management.web_leave_template', {
             'student': students,
@@ -27,6 +29,7 @@ class WebLeaveController(Controller):
 
     @route('/webform_leave/submit', type='http', auth='public', website=True, methods=['POST'])
     def web_form_submit(self, **post):
+        """Submit button for student leave"""
         print('hi')
         student_id = int(post.get('student_id'))
         request.env['manage.leave'].sudo().create({
@@ -39,6 +42,7 @@ class WebLeaveController(Controller):
 
     @http.route('/leave/<model("manage.leave"):leave>/', auth='public', website=True)
     def student_leave_list(self, leave):
+        """View student leave details from website"""
         return http.request.render('school_management.student_leave_details', {
             'leaves': leave
         })

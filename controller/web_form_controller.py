@@ -5,6 +5,7 @@ from odoo.http import request, Controller, route
 class WebFormController(Controller):
     @route(['/webform_view', '/webform_view/page/<int:page>'], auth='public', website=True)
     def web_form_view(self, page=1, **kwargs):
+        """Pagenation and view for the student registration"""
         student_obj = request.env['student.registration']
         total_students = student_obj.search_count([])
         page_detail = request.website.pager(
@@ -19,17 +20,19 @@ class WebFormController(Controller):
 
     @http.route('/student/<model("student.registration"):student>/', auth='public', website=True)
     def student_details(self, student):
+        """To view student details"""
         return http.request.render('school_management.web_form_view_template', {
             'person': student
         })
 
     @route('/webform_view/webform', auth='public', website=True)
     def web_form(self, **kwargs):
-        print('hey')
+        """student registration form"""
         return request.render('school_management.web_form_template')
 
     @route('/webform/submit', type='http', auth='public', website=True, methods=['POST'])
     def web_form_submit(self, **post):
+        """Validation for aadhaar number and submit button in form"""
         aadhaar = post.get('aadhaar_number')
 
         existing = request.env['student.registration'].sudo().search([('aadhaar_number', '=', aadhaar)], limit=1)

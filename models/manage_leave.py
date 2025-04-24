@@ -11,22 +11,13 @@ class ManageLeave(models.Model):
     _description = 'Leaves'
     _rec_name = 'student_id'
 
-    student_id = fields.Many2one(comodel_name='student.registration', string="Student", required=True)
+    student_id = fields.Many2one(comodel_name='student.registration', string="Student", required=True ,ondelete='cascade')
     class_id = fields.Many2one(related='student_id.class_id',store=True)
     start_date = fields.Date(string="Start Date",default=datetime.now())
     end_date = fields.Date(string="End Date")
     total_day = fields.Integer(string="Total Days", compute="_compute_total_day", store=True)
     half_day = fields.Boolean(string="Half Days")
     reason = fields.Char(string="Reason")
-
-    # @api.onchange('start_date', 'end_date', 'total_day')
-    # def calculate_date(self):
-    #     if self.start_date and self.end_date:
-    #         d1 = datetime.strptime(str(self.start_date), '%Y-%m-%d')
-    #         d2 = datetime.strptime(str(self.end_date), '%Y-%m-%d')
-    #         d3 = d2 - d1
-    #         self.total_day = str(d3.days)
-
 
     @api.depends("start_date", "end_date")
     def _compute_total_day(self):

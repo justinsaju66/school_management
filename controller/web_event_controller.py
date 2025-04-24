@@ -4,7 +4,8 @@ from odoo.http import request, Controller, route
 class WebEventController(Controller):
 
     @route(['/webform_event_view','/webform_event_view/page/<int:page>'], auth='public', website=True)
-    def web_form_view(self,page=1, **kwargs):
+    def web_event_view(self,page=1, **kwargs):
+        """To view and pagenation for the view"""
         event_obj = request.env['manage.event']
         total_students = event_obj.search_count([])
         page_detail = request.website.pager(
@@ -18,16 +19,16 @@ class WebEventController(Controller):
         return request.render('school_management.event_list_template',values )
 
     @route('/webform_event_view/webform_event', auth='public', website=True)
-    def web_form(self, **kwargs):
+    def web_event(self, **kwargs):
+        """Form view for register new event through website"""
         clubs = request.env['manage.club'].sudo().search([])
-        print(clubs)
         return request.render('school_management.web_event_template', {
             'club': clubs,
         })
 
     @route('/webform_event/submit', type='http', auth='public', website=True, methods=['POST'])
-    def web_form_submit(self, **post):
-        print('hi')
+    def web_event_submit(self, **post):
+        """Method for submitting button in website"""
         club_id = int(post.get('club_id'))
         request.env['manage.event'].sudo().create({
             'name': post.get('name'),
@@ -38,7 +39,8 @@ class WebEventController(Controller):
         return request.render('school_management.thank_you_page')
 
     @http.route('/event/<model("manage.event"):event>/', auth='public', website=True)
-    def student_leave_list(self, event):
+    def student_event_list(self, event):
+        """To view event details"""
         return http.request.render('school_management.student_event_details', {
             'event': event
         })

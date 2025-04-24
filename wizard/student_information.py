@@ -15,9 +15,7 @@ class StudentInformation(models.TransientModel):
     class_id = fields.Many2one(
         comodel_name='manage.class',
         string="Class",
-        change_default=True, index=True,
-        tracking=1,
-        check_company=True)
+        )
     department_id = fields.Many2one(
         comodel_name='manage.department',
         string="Department",
@@ -38,9 +36,8 @@ class StudentInformation(models.TransientModel):
         return self.env.ref('school_management.action_report_student_information').report_action(self, data=data)
 
     def action_exl_report_student(self):
+        """Fetch student data for excel report"""
         company = self.env.company
-
-
 
         data = {
             'student_id': self.student_id.id,

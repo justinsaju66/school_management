@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
-    <template id="school_management_event_snippet" name="School Event Snippet">
-
-        <section class="oe_structure container dynamic_snippet_blog">
-
-            <div class="row">
-
-                <div class="col-md-12">
-
-                    <div class="text-center py-5">
-
-                        <h1 class="h1">School Event</h1>
-
-                        <div class="h3" style="text-align:center">Latest School Event</div>
-
-                        <div id="courosel">
-
-                        </div>
-
-                    </div>
-
+    <template id="school_event_template" name="School Event">
+        <section class="categories_section ">
+            <div class="container">
+                <div class="alert alert-info">
+                    <h4>Your Category Highlight Tab snippet will be displayed here...
+                        Please save to view the snippet
+                    </h4>
                 </div>
-
             </div>
-
         </section>
     </template>
 
-    <template id="external_snippets" inherit_id="website.snippets" priority="8">
-        <xpath expr="//snippets[@id='snippet_content']//t[@t-snippet][last()]" position="after">
-            <t t-snippet="school_management.school_management_event_snippet"/>
+    <template id="school_event_snippet" inherit_id="website.snippets"
+              name="School Event Snippet">
+        <xpath expr="//snippets[@id='snippet_groups']" position="inside">
+            <t t-snippet="school_management.school_event_template"
+              />
         </xpath>
-    </template>
+     </template>
 
 
 </odoo>

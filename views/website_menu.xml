@@ -23,7 +23,7 @@
 
      <record id="website_partner_menu_event_snippets" model="website.menu">
         <field name="name">Event</field>
-        <field name="url">/school_event_snippet</field>
+        <field name="url">/snippet_view</field>
         <field name="parent_id" ref="website.main_menu"/>
         <field name="sequence" type="int">93</field>
     </record>

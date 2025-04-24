@@ -9,7 +9,7 @@ class ManageClub(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name", required=True)
-    student_ids = fields.Many2many(comodel_name='student.registration')
+    student_ids = fields.Many2many(comodel_name='student.registration',ondelete='cascade',)
     event_count = fields.Integer("Event Count", compute ="_compute_event_count")
     event_ids = fields.One2many("manage.event", inverse_name="club_id")
 

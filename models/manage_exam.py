@@ -15,9 +15,7 @@ class ManageExam(models.Model):
     class_id = fields.Many2one(
         comodel_name='manage.class',
         string="Class",
-        change_default=True, index=True,
-        tracking=1,
-        check_company=True)
+        )
     paper_ids = fields.Many2many(comodel_name='manage.subject')
 
 

@@ -12,12 +12,9 @@ class ManageClass(models.Model):
     department_id = fields.Many2one(
         comodel_name='manage.department',
         string="Department",
-        change_default=True, index=True,
-        tracking=1,
-        check_company=True)
+        )
     hod_id = fields.Many2one(related='department_id.hod_id')
     school_id = fields.Many2one(
         comodel_name='res.company',
         string="School", default=lambda self: self.env.user.company_id.id,
-        change_default=True, index=True,
-        tracking=1)
+        )
