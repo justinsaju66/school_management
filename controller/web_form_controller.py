@@ -17,6 +17,12 @@ class WebFormController(Controller):
         values = {'students': students,'pager': page_detail}
         return request.render('school_management.student_list_template',values)
 
+    @http.route('/student/<model("student.registration"):student>/', auth='public', website=True)
+    def student_details(self, student):
+        return http.request.render('school_management.web_form_view_template', {
+            'person': student
+        })
+
     @route('/webform_view/webform', auth='public', website=True)
     def web_form(self, **kwargs):
         print('hey')
@@ -35,7 +41,6 @@ class WebFormController(Controller):
             }
             return request.render('school_management.web_form_template', values)
 
-
         request.env['student.registration'].sudo().create({
             'fname': post.get('fname'),
             'lname': post.get('lname'),
@@ -46,16 +51,11 @@ class WebFormController(Controller):
             'dob': post.get('dob'),
             'age': post.get('age'),
             'aadhaar_number': post.get('aadhaar_number'),
-
         })
         print('hello')
         return request.render('school_management.thank_you_page')
 
-    @http.route('/student/<model("student.registration"):student>/', auth='public', website=True)
-    def student_details(self, student):
-        return http.request.render('school_management.web_form_view_template', {
-            'person': student
-        })
+
 
 
 

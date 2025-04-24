@@ -24,6 +24,7 @@
          'data/registration_templates.xml',
          'data/leave_template.xml',
          'data/event_template.xml',
+         'views/school_management_event_snippet.xml',
          'views/student_registration_views.xml',
          'views/academic_year_views.xml',
          'views/manage_class_views.xml',
@@ -54,14 +55,12 @@
             'school_management/static/src/js/action_manager.js',
 
         ],
+        'web.assets_frontend': ['school_management/static/src/xml/dynamic_courosel.xml',
+                                'school_management/static/src/js/snippet.js',
+                                ],
 
     },
-    # data files containing optionally loaded demonstration data
-    #    'demo': [
-    #     'data/manage_department_demo.xml',
-    #      'data/manage_subject_demo.xml',
-    #      'data/manage_class_demo.xml',
-    #     ],
+
     'application': True,
     'installable': True,
     'auto_install': True,
