@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="school_management.event_data">
-        <section class="dynamic_snippet_blog">
+        <section class="categories_section">
             <div class="container" id="event_carousel">
-                <h3 class="section_heading">School Events</h3>
+                <h3 class="section_heading"><center>School Events</center></h3>
                 <div class="events_wrapper">
                     <div id="course_carousel" class="container carousel slide" data-bs-ride="carousel"
                          t-att-data-bs-interval="interval">
                         <div class="carousel-inner row w-100 mx-auto pt-3" role="listbox">
-                            <t t-foreach="chunks" t-as="chunk">
+                            <t t-foreach="event_chunks" t-as="chunk" t-key="chunk.id">
                                 <div t-att-class="chunk.is_active ? 'carousel-item active' : 'carousel-item'">
                                     <div class="row">
-                                        <t t-foreach="chunk" t-as="item">
+                                        <t t-foreach="chunk" t-as="item" t-key="item.id">
                                             <div class="block span3 col-3">
                                                 <div class="card-group">
                                                     <div class="card">
-                                                        <img src="/theme_og_store/static/src/img/default_category.svg"
-                                                             class="img img-fluid rotate-center"
-                                                             alt="Default Category Image"
-                                                             loading="lazy"/>
-
-                                                        <h5 class="mb-0"><t t-esc="item.name"/></h5>
+                                                        <t t-if="item.photo">
+                                                            <img t-att-src="'data:image/png;base64,' + item.photo"
+                                                                 class="img img-fluid rotate-center"
+                                                                 t-att-alt="item.name or 'item Photo'"
+                                                                 loading="lazy" style="height: 160px;"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img src="/school_management/static/src/img/download (1).png"
+                                                                 class="img img-fluid rotate-center"
+                                                                 alt="Default Event Image"
+                                                                 loading="lazy" style="height: 160px;"/>
+                                                        </t>
+                                                        <h5 class="mb-0"><center><t t-esc="item.name"/></center></h5>
                                                         <a t-attf-href="/event/{{item.id}}" class="btn btn-primary">
                                                                         Goto Event
                                                         </a>
@@ -34,20 +41,16 @@
                         </div>
                     </div>
                 </div>
-                <a t-attf-href="#event_carousel" class="carousel-control-prev" data-bs-slide="prev" role="button" aria-label="Previous" title="Previous">
-
+                <a t-attf-href="#course_carousel" class="carousel-control-prev" data-bs-slide="prev" role="button" aria-label="Previous" title="Previous">
                             <span class="fa fa-chevron-circle-left fa-2x"/>
                             <span class="visually-hidden">Previous</span>
-
                             </a>
-                             <a t-attf-href="#event_carousel" class="carousel-control-next" data-bs-slide="next" role="button" aria-label="Next" title="Next">
-
+                             <a t-attf-href="#course_carousel" class="carousel-control-next" data-bs-slide="next" role="button" aria-label="Next" title="Next">
                             <span class="fa fa-chevron-circle-right fa-2x"/>
-
                             <span class="visually-hidden">Next</span>
-
                         </a>
             </div>
         </section>
     </t>
 </templates>
+

@@ -38,7 +38,6 @@
          'views/registration_website_view.xml',
          'views/leave_website_view.xml',
          'views/event_website_view.xml',
-         'views/event_snippet_view.xml',
          'report/ir.actions.report.xml',
          'report/student_leave_report_template.xml',
          'report/student_information_template.xml',

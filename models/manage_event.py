@@ -23,6 +23,7 @@ class ManageEvent(models.Model):
         )
     active = fields.Boolean(string="Active")
     user_id = fields.Many2one(comodel_name="res.partner")
+    photo = fields.Binary(string='Photo')
 
     def action_send_mail(self):
         """Method for action button and send mail for all partner"""

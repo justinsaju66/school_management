@@ -19,7 +19,7 @@ class EventSnippet(http.Controller):
     def get_school_event(self):
         """Get the website categories for the snippet."""
         public_categs = request.env[
-            'manage.event'].sudo().search_read(fields=['name', 'id'],order='create_date desc', limit=4
+            'manage.event'].sudo().search_read(fields=['name', 'id','photo'],order='create_date desc'
         )
         values = {
             'events': public_categs,

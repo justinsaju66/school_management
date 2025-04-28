@@ -1,38 +1,27 @@
-
-/** @odoo-module */
+/** @odoo-module **/
 import { renderToElement } from "@web/core/utils/render";
 import publicWidget from "@web/legacy/js/public/public_widget";
 import { rpc } from "@web/core/network/rpc";
-var qweb = core.qweb;
-var Dynamic = PublicWidget.Widget.extend({
 
-selector: '.dynamic_snippet_blog',
+function chunkArray(array, size) {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+        chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+}
 
-willStart: async function() {
+publicWidget.registry.get_property_tab = publicWidget.Widget.extend({
+    selector : '.categories_section',
+    async willStart() {
+        const result = await rpc('/get_events', {});
+        if(result && result.events){
+            const chunks = chunkArray(result.events, 4);
+            chunks[0].is_active = true
+            this.$target.empty().html(renderToElement('school_management.event_data', {
+                event_chunks: chunks,
 
-var self = this;
-
-await rpc.query({
-
-route: '/get_events',
-
-}).then((data) => {
-
-this.data = data;
-
-});
-
-},
-
-start: function() {
-
-var chunks = _.chunk(this.data, 4)
-
-chunks[0].is_active = true
-
-this.$el.find('#courosel').html(qweb.render('school_management.event_data', {chunks}))
-},
-
-PublicWidget.registry.dynamic_snippet_blog = Dynamic;
-return Dynamic;
+            }));
+        }
+    },
 });
