@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="event_snippet_template">
+        <section class="oe_structure container dynamic_snippet_blog">
         <t t-call="website.layout">
             <div class="container my-5">
                 <h2 class="text-center">School Event</h2>
@@ -11,6 +12,7 @@
 
             </div>
         </t>
+        </section>
     </template>
 
 </odoo>

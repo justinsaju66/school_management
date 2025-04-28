@@ -15,11 +15,11 @@ class EventSnippet(http.Controller):
         """To get all event"""
         return request.render('school_management.student_event_details',{'event': event,})
 
-    @http.route('/get_product_categories', auth="public", type='json',website=True)
+    @http.route('/get_events', auth="public", type='json',website=True)
     def get_school_event(self):
         """Get the website categories for the snippet."""
         public_categs = request.env[
-            'manage.event'].sudo().search_read(fields=['name', 'id'],order='create_date desc', limit=10
+            'manage.event'].sudo().search_read(fields=['name', 'id'],order='create_date desc', limit=4
         )
         values = {
             'events': public_categs,
