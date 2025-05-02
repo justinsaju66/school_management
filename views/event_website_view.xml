@@ -138,4 +138,93 @@
         </t>
     </template>
 
+    <template id="student_event_snippet">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="container">
+                    <center>
+                        <h2>School Events</h2>
+                    </center>
+                    <form action="/webform_event/submit" method="post" enctype="multipart/form-data"
+                          class="o_mark_required" data-mark="*" data-model_name="" data-success-page="">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="event_id" t-if="event" t-att-value="event.id"/>
+                        <div class="s_website_form_rows row s_col_no_bgcolor">
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="name">
+                                        <span class="s_website_form_label_content">Name</span>
+                                        <span class="s_website_form_mark">*</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input" name="name"
+                                               required="1" id="name" readonly="readonly"
+                                               t-att-value="event.name if event else ''"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="club_id">
+                                        <span class="s_website_form_label_content">Club</span>
+                                        <span class="s_website_form_mark">*</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control s_website_form_input" name="club_id"
+                                               required="1" id="club_id" readonly="readonly"
+                                               t-att-value="event.club_id.name if event else ''"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6 s_website_form_field s_website_form_required mt-3"
+                                 data-type="char" data-name="Field">
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="event_date">
+                                        <span class="s_website_form_label_content">Event Date</span>
+                                        <span class="s_website_form_mark">*</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="date" class="form-control s_website_form_input"
+                                               name="event_date"
+                                               required="1" id="event_date" readonly="readonly"
+                                               t-att-value="event.event_date if event else ''"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                           style="width: 200px" for="active">
+                                        <span class="s_website_form_label_content">Active</span>
+
+                                    </label>
+                                    <div class="col-sm">
+                                        <input type="checkbox"
+                                               name="active" id="active" t-att-value="event.active if event else ''"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <center>
+                                    <div style="width: 200px;"/>
+                                    <br/>
+                                    <br/>
+                                    <a href="/">
+                                        <button type="button" class="btn btn-primary">Discard</button>
+                                    </a>
+                                </center>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
 </odoo>

@@ -17,7 +17,7 @@
               name="School Event Snippet">
         <xpath expr="//snippets[@id='snippet_groups']" position="inside">
             <t t-snippet="school_management.school_event_template"
-              />
+              t-thumbnail="/school_management/static/src/img/snippets/s_speaker_bio.svg/"/>
         </xpath>
      </template>
 

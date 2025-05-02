@@ -12,8 +12,8 @@ class EventSnippet(http.Controller):
 
     @route('/event/<model("manage.event"):event>', auth='public', website=True)
     def event_snippet(self,event, **kwargs):
-        """To get all event"""
-        return request.render('school_management.student_event_details',{'event': event,})
+        """To get event"""
+        return request.render('school_management.student_event_snippet',{'event': event,})
 
     @http.route('/get_events', auth="public", type='json',website=True)
     def get_school_event(self):

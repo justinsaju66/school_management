@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': "School",
-    'version': '1.0',
-    'depends': ['base','hr','sale', 'web','website'],
+    'version': '18.0.1.0.0',
+    'depends': ['base','hr','sale', 'web','website','website_sale'],
     'author': "Author Name",
     'category': 'all',
     'sequence':1,
@@ -23,7 +23,8 @@
          'data/registration_templates.xml',
          'data/leave_template.xml',
          'data/event_template.xml',
-         'views/school_management_event_snippet.xml',
+         'data/add_to_cart.xml',
+         'views/school_event_template.xml',
          'views/student_registration_views.xml',
          'views/academic_year_views.xml',
          'views/manage_class_views.xml',

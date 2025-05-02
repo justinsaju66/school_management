@@ -18,8 +18,10 @@ publicWidget.registry.get_property_tab = publicWidget.Widget.extend({
         if(result && result.events){
             const chunks = chunkArray(result.events, 4);
             chunks[0].is_active = true
+            const uniq = Date.now()
             this.$target.empty().html(renderToElement('school_management.event_data', {
                 event_chunks: chunks,
+                uniq : uniq,
 
             }));
         }
