@@ -143,8 +143,6 @@ class StudentRegistration(models.Model):
 
         }
 
-
-
     def update_attendance(self):
         """Method for marking attendance"""
         today = fields.Date.today()
